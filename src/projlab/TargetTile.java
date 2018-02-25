@@ -3,17 +3,14 @@ package projlab;
 import java.util.HashMap;
 
 public class TargetTile extends Tile {
+    Worker w;
 
-    TargetTile(HashMap<Direction, Tile> n){
-        super(n);
-    }
-
-    TargetTile(HashMap<Direction, Tile> n, GameObject g){
-        super(n, g);
+    public TargetTile(Worker w) {
+        this.w = w;
     }
 
     @Override
-    public void enter(Worker w, Direction d) {
+    public void enter(Box b, Direction d) {
         w.setPoints(w.getPoints() + 500);
     }
 }

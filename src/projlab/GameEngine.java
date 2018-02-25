@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Stream;
 
 public class GameEngine {
@@ -14,8 +15,8 @@ public class GameEngine {
     private Timer timer;
     private List<Tile> tiles;
 
-    public GameEngine(int gameTimeSeconds, List<Tile> tiles) {
-        this.workers = new ArrayList<Worker>();
+    public GameEngine(int gameTimeSeconds, List<Tile> tiles, List<Worker> workers;) {
+        this.workers = workers;
         this.timer = new Timer(gameTimeSeconds);
         this.tiles = tiles;
     }
@@ -39,8 +40,9 @@ public class GameEngine {
     }
 
     private void startGame(){
-        workers.add(new Worker(this));
-        workers.add(new Worker(this));
+        for(Worker w: workers){
+            w.setController(this);
+        }
         playGame();
     }
 
@@ -104,11 +106,37 @@ public class GameEngine {
         return lines.toArray(new String[lines.size()]);
     }
 
-    public static void loadMap(String path) throws IOException {
+    public static GameEngine loadGame(String path) throws IOException {
         String [] lines = readLines(path);
-        for(String s : lines){
-            System.out.println(s);
+
+        int mapLength = lines.length;
+
+        ArrayList<Tile> tiles  = new ArrayList<Tile>();
+        ArrayList<Worker> workers= new ArrayList<Worker>();
+
+        for (int i = 0; i<lines.length; i++){
+            for (int j = 0; j < lines[i].length(); j++){
+                if (lines[i].charAt(j) == 'W'){
+                    tiles.add(new Wall());
+                } else if (lines[i].charAt(j) == 'P') {
+                    Tile t = new Tile();
+                    Worker w = new Worker();
+                    t.setOccupiedBy(w);
+                    tiles.add(t);
+                    objects.add(w);
+                } else if (lines[i].charAt(j) == 'T') {
+                    tiles.add(new Tile());
+                } else if (lines[i].charAt(j) == 'B'){
+                    Tile t = new Tile();
+                    t.setOccupiedBy(new Box());
+                    tiles.add(t);
+                }
+            }
         }
+
+        
+
+        return new GameEngine(tiles, workers);
     }
 
     public static void main(String[] args){

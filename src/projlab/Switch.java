@@ -6,24 +6,25 @@ public class Switch extends Tile {
     private boolean closed;
     private Tile controlling;
 
-    public Switch(HashMap<Direction, Tile> n, Tile controlling) {
-        super(n);
-        this.controlling = controlling;
-    }
-
-    public Switch(HashMap<Direction, Tile> n, GameObject g, Tile controlling) {
-        super(n, g);
-        this.controlling = controlling;
+    public Switch() {
+        closed = true;
+        controlling = null;
     }
 
     public void toggle(){
         if (closed){
-            controlling = new Hole(controlling.neighbors);
+            controlling = new Hole();
+            controlling.setNeighbors(controlling.neighbors);
         }
         else {
-            controlling = new Tile(controlling.neighbors);
+            controlling = new Hole();
+            controlling.setNeighbors(controlling.neighbors);
         }
         closed = !closed;
+    }
+
+    public void setControlling(Tile controlling) {
+        this.controlling = controlling;
     }
 
     @Override

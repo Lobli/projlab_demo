@@ -4,12 +4,16 @@ public class Worker extends GameObject {
     private int points;
     private GameEngine controller;
 
-    public Worker(GameEngine controller){
+    public Worker(){
         points = 0;
         this.controller = controller;
     }
 
-     @Override
+    public void setController(GameEngine controller) {
+        this.controller = controller;
+    }
+
+    @Override
     public void move(Direction d) {
          if (tile.getNeigborInDirection(d).canEnter(this, d)) {
              tile.getNeigborInDirection(d).enter(this, d);

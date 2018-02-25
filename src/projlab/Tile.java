@@ -7,16 +7,18 @@ public class Tile {
     protected HashMap<Direction, Tile> neighbors;
     private GameObject occupiedBy;
 
-    public Tile(HashMap<Direction, Tile> n){
+    public Tile(){
         locked = false;
-        neighbors = n;
+        neighbors = null;
         occupiedBy = null;
     }
 
-    public Tile(HashMap<Direction, Tile> n, GameObject g){
-        locked = false;
-        neighbors = n;
-        occupiedBy = g;
+    public void setOccupiedBy(GameObject occupiedBy) {
+        this.occupiedBy = occupiedBy;
+    }
+
+    public void setNeighbors(HashMap<Direction, Tile> neighbors) {
+        this.neighbors = neighbors;
     }
 
     public boolean canEnter(Worker worker, Direction goingIn){
