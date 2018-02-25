@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
@@ -15,7 +16,7 @@ public class GameEngine {
     private Timer timer;
     private List<Tile> tiles;
 
-    public GameEngine(int gameTimeSeconds, List<Tile> tiles, List<Worker> workers;) {
+    public GameEngine(int gameTimeSeconds, List<Tile> tiles, List<Worker> workers) {
         this.workers = workers;
         this.timer = new Timer(gameTimeSeconds);
         this.tiles = tiles;
@@ -51,6 +52,7 @@ public class GameEngine {
     }
 
     private void playGame(){
+        System.out.println("Game running!");
         while (timer.getTime() != 0){
             String[] inputs = System.console().readLine().split(" "); //pl. W W
 
@@ -123,7 +125,7 @@ public class GameEngine {
                     Worker w = new Worker();
                     t.setOccupiedBy(w);
                     tiles.add(t);
-                    objects.add(w);
+                    workers.add(w);
                 } else if (lines[i].charAt(j) == 'T') {
                     tiles.add(new Tile());
                 } else if (lines[i].charAt(j) == 'B'){
@@ -134,18 +136,100 @@ public class GameEngine {
             }
         }
 
-        
+        for (int i = 0; i < tiles.size() / mapLength; i++) {
+            for (int j = 0; j < 5; j++) {
+                if (i == 0) { // első sor
+                    if (j == 0) { // első oszlop
+                        HashMap<Direction, Tile> n = new HashMap<Direction, Tile>();
+                        n.put(Direction.UP, null);
+                        n.put(Direction.RIGHT, tiles.get(mapLength * i + j + 1));
+                        n.put(Direction.DOWN, tiles.get(mapLength * (i + 1) + j));
+                        n.put(Direction.LEFT, null);
+                        tiles.get(mapLength * i + j).setNeighbors(n);
+                    } else if (j == mapLength - 1) { //utolsó oszlop
+                        HashMap<Direction, Tile> n = new HashMap<Direction, Tile>();
+                        n.put(Direction.UP, null);
+                        n.put(Direction.RIGHT, null);
+                        n.put(Direction.DOWN, tiles.get(mapLength * (i + 1) + j));
+                        n.put(Direction.LEFT, tiles.get(mapLength * i + j - 1));
+                        tiles.get(mapLength * i + j).setNeighbors(n);
+                    } else { // középső oszlopok
+                        HashMap<Direction, Tile> n = new HashMap<Direction, Tile>();
+                        n.put(Direction.UP, null);
+                        n.put(Direction.RIGHT, tiles.get(mapLength*(i) + j+1));
+                        n.put(Direction.DOWN, tiles.get(mapLength*(i+1) + j));
+                        n.put(Direction.LEFT, tiles.get(mapLength*i + j-1));
+                        tiles.get(mapLength*i+j).setNeighbors(n);
+                    }
+                }
 
-        return new GameEngine(tiles, workers);
+                else if (i == tiles.size() -1){ // utolsó sor
+                    if (j == 0) { // első oszlop
+                        HashMap<Direction, Tile> n = new HashMap<Direction, Tile>();
+                        n.put(Direction.UP, tiles.get(mapLength*(i-1) + j));
+                        n.put(Direction.RIGHT, tiles.get(mapLength*i + j+1));
+                        n.put(Direction.DOWN, null);
+                        n.put(Direction.LEFT, null);
+                        tiles.get(mapLength*i+j).setNeighbors(n);
+                    }
+                    else if (j == mapLength - 1) { // utolsó oszlop
+                        HashMap<Direction, Tile> n = new HashMap<Direction, Tile>();
+                        n.put(Direction.UP, tiles.get(mapLength*(i-1) + j));
+                        n.put(Direction.RIGHT, null);
+                        n.put(Direction.DOWN, null);
+                        n.put(Direction.LEFT, tiles.get(mapLength*i + j-1));
+                        tiles.get(mapLength*i+j).setNeighbors(n);
+                    }
+                    else { // középső oszlopok
+                        HashMap<Direction, Tile> n = new HashMap<Direction, Tile>();
+                        n.put(Direction.UP,  tiles.get(mapLength*(i-1) + j));
+                        n.put(Direction.RIGHT, tiles.get(mapLength*(i) + j+1));
+                        n.put(Direction.DOWN, null);
+                        n.put(Direction.LEFT, tiles.get(mapLength*i + j-1));
+                        tiles.get(mapLength*i+j).setNeighbors(n);
+                    }
+                }
+
+                else { // középső sorok
+                    if (j == 0){ // első oszlop
+                        HashMap<Direction, Tile> n = new HashMap<Direction, Tile>();
+                        n.put(Direction.UP,  tiles.get(mapLength*(i-1) + j));
+                        n.put(Direction.RIGHT, tiles.get(mapLength*(i) + j+1));
+                        n.put(Direction.DOWN, tiles.get(mapLength*(i+1) + j));
+                        n.put(Direction.LEFT, null);
+                        tiles.get(mapLength*i+j).setNeighbors(n);
+                    }
+                    else if (j == mapLength - 1){ // utolsó oszlop
+                        HashMap<Direction, Tile> n = new HashMap<Direction, Tile>();
+                        n.put(Direction.UP,  tiles.get(mapLength*(i-1) + j));
+                        n.put(Direction.RIGHT, null);
+                        n.put(Direction.DOWN, tiles.get(mapLength*(i+1) + j));
+                        n.put(Direction.LEFT, tiles.get(mapLength*i + j-1));
+                        tiles.get(mapLength*i+j).setNeighbors(n);
+                    }
+                    else {
+                        HashMap<Direction, Tile> n = new HashMap<Direction, Tile>();
+                        n.put(Direction.UP,  tiles.get(mapLength*(i-1) + j));
+                        n.put(Direction.RIGHT, tiles.get(mapLength*(i) + j+1));
+                        n.put(Direction.DOWN, tiles.get(mapLength*(i+1) + j));
+                        n.put(Direction.LEFT, tiles.get(mapLength*i + j-1));
+                        tiles.get(mapLength*i+j).setNeighbors(n);
+                    }
+
+                }
+            }
+        }
+
+        return new GameEngine(90, tiles, workers);
     }
 
     public static void main(String[] args){
+        GameEngine gameEngine = null;
         try {
-            loadMap("/Users/its_behind_you/IdeaProjects/untitled1/out/production/untitled1/com/company/map.txt");
+            gameEngine = loadGame("/Users/its_behind_you/IdeaProjects/untitled1/out/production/untitled1/com/company/map.txt");
         } catch (Exception e){
             System.out.println(e.getStackTrace());
         }
-        //GameEngine engine = new GameEngine(90, map);
-        //engine.startGame();
+
     }
 }
