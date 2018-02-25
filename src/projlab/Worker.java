@@ -1,3 +1,5 @@
+package projlab;
+
 public class Worker extends GameObject {
     private int points;
     private GameEngine controller;
@@ -9,22 +11,21 @@ public class Worker extends GameObject {
 
      @Override
     public void move(Direction d) {
-        if (tile.canEnter(this, d)) {
-            tile.getNeigborInDirection(d).enter(this, d);
-        }
-    }
+         if (tile.getNeigborInDirection(d).canEnter(this, d)) {
+             tile.getNeigborInDirection(d).enter(this, d);
+         }
+     }
 
     @Override
-    public boolean canTakePlace(Box b, Direction d) {
-        if(tile.getNeigborInDirection(d).canEnter(this, d)){
+    public boolean push(Direction d) {
+        if (tile.getNeigborInDirection(d).canEnter(this, d)) {
             tile.getNeigborInDirection(d).enter(this, d);
+            return true;
         }
-
-    }
-
-    @Override
-    public boolean canTakePlace(Worker w, Direction d) {
-        return false;
+        else {
+            kill();
+            return false;
+        }
     }
 
     public void kill(){

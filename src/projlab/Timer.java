@@ -1,3 +1,5 @@
+package projlab;
+
 public class Timer {
     private int time;
     private boolean paused;

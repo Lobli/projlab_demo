@@ -1,3 +1,5 @@
+package projlab;
+
 import java.util.HashMap;
 
 public class Tile {
@@ -19,10 +21,11 @@ public class Tile {
 
     public boolean canEnter(Worker worker, Direction goingIn){
         if(occupiedBy == null){
+            checkLocked();
             return true;
         }
         else {
-            return getNeigborInDirection(goingIn).canEnter(worker, goingIn);
+            return occupiedBy.push(goingIn);
         }
     }
 
@@ -31,7 +34,7 @@ public class Tile {
             return true;
         }
         else {
-            return getNeigborInDirection(goingIn).canEnter(box, goingIn);
+            return occupiedBy.push(goingIn);
         }
     }
 

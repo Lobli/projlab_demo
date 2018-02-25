@@ -1,3 +1,5 @@
+package projlab;
+
 import java.util.HashMap;
 
 public class TargetTile extends Tile {

@@ -1,6 +1,13 @@
+package projlab;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class GameEngine {
     private List<Worker> workers;
@@ -81,18 +88,36 @@ public class GameEngine {
     }
 
     public void kill(Worker worker){
-        System.out.print("Worker dead!");
+        System.out.print("projlab.Worker dead!");
         endGame();
     }
 
-    public static List<Tile> loadMap(String Path){
-        return new ArrayList<Tile>();
+    public static String[] readLines(String filename) throws IOException {
+        FileReader fileReader = new FileReader(filename);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        List<String> lines = new ArrayList<String>();
+        String line = null;
+        while ((line = bufferedReader.readLine()) != null) {
+            lines.add(line);
+        }
+        bufferedReader.close();
+        return lines.toArray(new String[lines.size()]);
     }
 
-    public static void main(){
-        List<Tile> map = loadMap("~foo");
-        GameEngine engine = new GameEngine(90, map);
-        engine.startGame();
+    public static void loadMap(String path) throws IOException {
+        String [] lines = readLines(path);
+        for(String s : lines){
+            System.out.println(s);
+        }
     }
 
+    public static void main(String[] args){
+        try {
+            loadMap("/Users/its_behind_you/IdeaProjects/untitled1/out/production/untitled1/com/company/map.txt");
+        } catch (Exception e){
+            System.out.println(e.getStackTrace());
+        }
+        //GameEngine engine = new GameEngine(90, map);
+        //engine.startGame();
+    }
 }

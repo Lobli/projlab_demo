@@ -1,3 +1,5 @@
+package projlab;
+
 import java.util.HashMap;
 
 public class Wall extends Tile {
@@ -10,12 +12,12 @@ public class Wall extends Tile {
     }
 
     @Override
-    public void enter(Worker worker, Direction direction) {
-        //cannot into wall
+    public boolean canEnter(Box box, Direction goingIn) {
+        return false;
     }
 
     @Override
-    public void enter(Box b, Direction d) {
-        //cannot into wall
+    public boolean canEnter(Worker worker, Direction goingIn) {
+        return false;
     }
 }
