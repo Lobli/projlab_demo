@@ -10,6 +10,10 @@ public class TargetTile extends Tile {
     @Override
     public void enter(Box b, Direction d) {
         belongsTo.setPoints(belongsTo.getPoints() + 500);
+        removeBox(b);
+    }
+
+    void removeBox(Box b) {
         b = null;
     }
 

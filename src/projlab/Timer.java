@@ -16,7 +16,11 @@ public class Timer {
     }
 
     public void togglePaused(){
-        paused = !paused;
+        setPaused(!paused);
+    }
+
+    public void setPaused(boolean paused) {
+        this.paused = paused;
     }
 
     public void setTime(int time) {

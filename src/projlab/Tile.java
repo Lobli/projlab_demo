@@ -31,7 +31,7 @@ public class Tile {
         }
         box.tile = this;
         this.occupiedBy = box;
-        checkLocked();
+        //checkLocked();
     }
 
     public boolean canBeEnteredBy(Worker worker, Direction goingIn){
@@ -47,7 +47,6 @@ public class Tile {
     public boolean canBeEnteredBy(Box box, Direction goingIn){
         if(occupiedBy != null){
             if (occupiedBy.canBeOverPoweredBy(box, goingIn)) {
-                //return occupiedBy.canEnter(getNeighborInDirection(goingIn), goingIn);
                 return true;
             }
             return false;

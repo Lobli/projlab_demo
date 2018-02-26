@@ -16,7 +16,6 @@ public class GameEngine {
     private List<Worker> workers;
     private Timer timer;
     private List<Tile> tiles;
-    private char[] keys = {'D'};
 
     public GameEngine(int gameTimeSeconds, List<Tile> tiles, List<Worker> workers) {
         this.workers = workers;
@@ -37,24 +36,23 @@ public class GameEngine {
 
     private void playGame(){
         System.out.println("Game running!");
-        for (char c : keys){
+        while(timer.getTime() != 0) {
             Direction chosen = Direction.DOWN;
-            if (c == 'W'){
+            char c = 'W';
+            if (c == 'W') {
                 chosen = Direction.UP;
-            } else if (c == 'D'){
+            } else if (c == 'D') {
                 chosen = Direction.RIGHT;
-            } else if (c == 'S'){
+            } else if (c == 'S') {
                 chosen = Direction.DOWN;
             } else if (c == 'A') {
                 chosen = Direction.LEFT;
             }
             workers.get(0).move(chosen);
-            printMap();
-            if (allBoxesLocked()){
-                endGame();
-            }
-            endGame();
+            checkAllBoxesLocked();
+            timer.tick();
         }
+        endGame();
     }
 
     private void printMap(){
@@ -73,12 +71,13 @@ public class GameEngine {
         System.out.println();
     }
 
-    private boolean allBoxesLocked(){
+    private boolean checkAllBoxesLocked(){
         boolean allLocked = false;
         for(Tile tile: tiles){
             allLocked = allLocked | tile.isLocked();
         }
-        return allLocked;
+        if (allLocked)
+            endGame();
     }
 
     private int getWinner(){
@@ -115,8 +114,8 @@ public class GameEngine {
         String[] lines = {
                 "WWWWW",
                 "WTTTW",
-                "WTPPW",
-                "WTTTW",
+                "WTTBW",
+                "WTTPW",
                 "WTTTW",
                 "WWWWW"
         };
@@ -141,7 +140,8 @@ public class GameEngine {
                     w.tile = t;
                     workers.add(w);
                     tiles.add(t);
-                } else {
+                }
+                else {
                     tiles.add(new Tile());
                 }
             }

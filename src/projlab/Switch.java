@@ -10,15 +10,16 @@ public class Switch extends Tile {
     }
 
     public void toggle(){
+        closed = !closed;
+        Tile t;
         if (closed){
-            controlling = new Hole();
-            controlling.setNeighbors(controlling.neighbors);
+            t = new Tile();
         }
         else {
-            controlling = new Hole();
-            controlling.setNeighbors(controlling.neighbors);
+            t = new Hole();
         }
-        closed = !closed;
+        t.setNeighbors(controlling.neighbors);
+        setControlling(t);
     }
 
     @Override
@@ -29,6 +30,12 @@ public class Switch extends Tile {
 
     public void setControlling(Tile controlling) {
         this.controlling = controlling;
+    }
+
+    @Override
+    public void leave(GameObject go) {
+        super.leave(go);
+        toggle();
     }
 
     @Override
