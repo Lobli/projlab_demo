@@ -1,10 +1,12 @@
 package projlab;
 
-import java.util.HashMap;
-
 public class Hole extends Tile {
     @Override
     public void enter(Box b, Direction d) {
+        removeBox(b);
+    }
+
+    void removeBox(Box b){
         b = null;
     }
 

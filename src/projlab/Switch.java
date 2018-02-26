@@ -11,6 +11,7 @@ public class Switch extends Tile {
 
     public void toggle(){
         closed = !closed;
+        /*
         Tile t;
         if (closed){
             t = new Tile();
@@ -20,6 +21,8 @@ public class Switch extends Tile {
         }
         t.setNeighbors(controlling.neighbors);
         setControlling(t);
+        */
+        System.out.println("Switch toggled!");
     }
 
     @Override
@@ -40,6 +43,6 @@ public class Switch extends Tile {
 
     @Override
     public String toString() {
-        return "S";
+        return occupiedBy == null ? "S" : occupiedBy.toString();
     }
 }

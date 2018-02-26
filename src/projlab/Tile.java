@@ -5,11 +5,11 @@ import java.util.HashMap;
 public class Tile {
     private boolean locked;
     protected HashMap<Direction, Tile> neighbors;
-    private GameObject occupiedBy;
+    protected GameObject occupiedBy;
 
     public Tile(){
         locked = false;
-        neighbors = null;
+        neighbors = new HashMap<Direction, Tile>();
         occupiedBy = null;
     }
 
@@ -55,8 +55,8 @@ public class Tile {
     }
 
 
-    public void setNeighbors(HashMap<Direction, Tile> neighbors) {
-        this.neighbors = neighbors;
+    public void setNeighborInDirection(Direction direction, Tile tile) {
+        this.neighbors.put(direction, tile);
     }
 
     public Tile getNeighborInDirection(Direction d){
