@@ -1,16 +1,20 @@
 package projlab;
 
-import java.util.HashMap;
-
 public class TargetTile extends Tile {
-    Worker w;
+    Worker belongsTo;
 
     public TargetTile(Worker w) {
-        this.w = w;
+        this.belongsTo = w;
     }
 
     @Override
     public void enter(Box b, Direction d) {
-        w.setPoints(w.getPoints() + 500);
+        belongsTo.setPoints(belongsTo.getPoints() + 500);
+        b = null;
+    }
+
+    @Override
+    public String toString() {
+        return "O";
     }
 }

@@ -14,4 +14,9 @@ public class Hole extends Tile {
         super.enter(w, d);
         w.kill();
     }
+
+    @Override
+    public String toString() {
+        return "H";
+    }
 }

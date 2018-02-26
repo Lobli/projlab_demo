@@ -1,7 +1,5 @@
 package projlab;
 
-import java.util.HashMap;
-
 public class Switch extends Tile {
     private boolean closed;
     private Tile controlling;
@@ -23,13 +21,18 @@ public class Switch extends Tile {
         closed = !closed;
     }
 
+    @Override
+    public void enter(Box box, Direction direction) {
+        super.enter(box, direction);
+        toggle();
+    }
+
     public void setControlling(Tile controlling) {
         this.controlling = controlling;
     }
 
     @Override
-    public void enter(Box box, Direction direction) {
-        super.enter(box, direction);
-        toggle();
+    public String toString() {
+        return "S";
     }
 }
