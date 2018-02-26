@@ -73,10 +73,10 @@ public class Tile {
        W| | T   akkor locked egy láda, ha bármelyik két szomszédos oldalról be van határolva. Ennnél sokkal egyszerűbb
         +-+     ellenőrizni, hogy legalább két ellentétes oldal szabad-e (a komplementer eset).
          T
-         T
-        +-+
-      W | | W
-        +-+
+         T          |  ACM   |
+        +-+         | TURING | Turing Award ezért a zseniális, korszakalkotó algoritmusért
+      W | | W       |________|
+        +-+          /      \
          T
     */
     public void checkLocked() {

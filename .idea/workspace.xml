@@ -2,24 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c95da17-6664-4597-8f73-d4d1f1194a85" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/projlab_demo/projlab/Box.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/projlab_demo/projlab/GameEngine.class" afterPath="$PROJECT_DIR$/out/production/projlab_demo/projlab/GameEngine.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/projlab_demo/projlab/GameObject.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/projlab_demo/projlab/Switch.class" afterPath="$PROJECT_DIR$/out/production/projlab_demo/projlab/Switch.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/projlab_demo/projlab/TargetTile.class" afterPath="$PROJECT_DIR$/out/production/projlab_demo/projlab/TargetTile.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/projlab_demo/projlab/Tile.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/out/production/projlab_demo/projlab/Wall.class" afterPath="$PROJECT_DIR$/out/production/projlab_demo/projlab/Wall.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/projlab_demo/projlab/Worker.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/projlab/Box.java" afterPath="$PROJECT_DIR$/src/projlab/Box.java" />
-      <change beforePath="$PROJECT_DIR$/src/projlab/GameEngine.java" afterPath="$PROJECT_DIR$/src/projlab/GameEngine.java" />
-      <change beforePath="$PROJECT_DIR$/src/projlab/GameObject.java" afterPath="$PROJECT_DIR$/src/projlab/GameObject.java" />
-      <change beforePath="$PROJECT_DIR$/src/projlab/Hole.java" afterPath="$PROJECT_DIR$/src/projlab/Hole.java" />
-      <change beforePath="$PROJECT_DIR$/src/projlab/Switch.java" afterPath="$PROJECT_DIR$/src/projlab/Switch.java" />
-      <change beforePath="$PROJECT_DIR$/src/projlab/TargetTile.java" afterPath="$PROJECT_DIR$/src/projlab/TargetTile.java" />
       <change beforePath="$PROJECT_DIR$/src/projlab/Tile.java" afterPath="$PROJECT_DIR$/src/projlab/Tile.java" />
-      <change beforePath="$PROJECT_DIR$/src/projlab/Wall.java" afterPath="$PROJECT_DIR$/src/projlab/Wall.java" />
-      <change beforePath="$PROJECT_DIR$/src/projlab/Worker.java" afterPath="$PROJECT_DIR$/src/projlab/Worker.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,8 +45,8 @@
       <file leaf-file-name="Tile.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/projlab/Tile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+            <state relative-caret-position="315">
+              <caret line="76" column="31" lean-forward="false" selection-start-line="76" selection-start-column="31" selection-end-line="76" selection-end-column="31" />
               <folding>
                 <element signature="method#Tile#0;class#Tile#0" expanded="false" />
                 <element signature="e#318#319#0" expanded="true" />
@@ -217,8 +200,8 @@
         <option value="$PROJECT_DIR$/src/projlab/Box.java" />
         <option value="$PROJECT_DIR$/src/projlab/Worker.java" />
         <option value="$PROJECT_DIR$/src/projlab/Wall.java" />
-        <option value="$PROJECT_DIR$/src/projlab/Tile.java" />
         <option value="$PROJECT_DIR$/src/projlab/GameEngine.java" />
+        <option value="$PROJECT_DIR$/src/projlab/Tile.java" />
       </list>
     </option>
   </component>
@@ -440,7 +423,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15840387" sideWeight="0.47138768" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19467956" sideWeight="0.50572246" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run Dashboard" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30108827" sideWeight="0.49427754" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run Dashboard" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30108827" sideWeight="0.49427754" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32889965" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1010,8 +993,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/projlab/Tile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        <state relative-caret-position="315">
+          <caret line="76" column="31" lean-forward="false" selection-start-line="76" selection-start-column="31" selection-end-line="76" selection-end-column="31" />
           <folding>
             <element signature="method#Tile#0;class#Tile#0" expanded="false" />
             <element signature="e#318#319#0" expanded="true" />
