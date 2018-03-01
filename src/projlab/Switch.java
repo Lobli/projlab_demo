@@ -10,8 +10,7 @@ public class Switch extends Tile {
     }
 
     public void toggle(){
-        closed = !closed;
-        /*
+        flipSwitch();
         Tile t;
         if (closed){
             t = new Tile();
@@ -19,9 +18,8 @@ public class Switch extends Tile {
         else {
             t = new Hole();
         }
-        t.setNeighbors(controlling.neighbors);
+        t.neighbors = controlling.neighbors;
         setControlling(t);
-        */
         System.out.println("Switch toggled!");
     }
 
@@ -33,6 +31,10 @@ public class Switch extends Tile {
 
     public void setControlling(Tile controlling) {
         this.controlling = controlling;
+    }
+
+    private void flipSwitch(){
+        closed = !closed;
     }
 
     @Override
