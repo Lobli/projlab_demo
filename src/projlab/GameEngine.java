@@ -6,27 +6,35 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class GameEngine {
     private List<Worker> workers;
-    private Timer timer;
     private List<Tile> tiles;
+    private List<Box> boxes;
+    private Timer timer;
+    private int gameTime;
 
-    public GameEngine(int gameTimeSeconds, List<Tile> tiles, List<Worker> workers) {
+    public GameEngine(int gameTimeSeconds, List<Tile> tiles, List<Worker> workers, List<Box> boxes) {
         this.workers = workers;
-        this.timer = new Timer(gameTimeSeconds);
         this.tiles = tiles;
+        this.boxes = boxes;
+        this.timer = null;
+        gameTime = gameTimeSeconds;
     }
 
     private void startGame(){
+        timer = new Timer(gameTime);
+
         for(Worker w: workers){
             w.setController(this);
         }
+
+        for (Box b : boxes){
+            b.setController(this);
+        }
+
         playGame();
     }
 
@@ -36,23 +44,34 @@ public class GameEngine {
 
     private void playGame(){
         System.out.println("Game running!");
-        while(timer.getTime() != 0) {
-            Direction chosen = Direction.DOWN;
-            char c = 'W';
-            if (c == 'W') {
-                chosen = Direction.UP;
-            } else if (c == 'D') {
-                chosen = Direction.RIGHT;
-            } else if (c == 'S') {
-                chosen = Direction.DOWN;
-            } else if (c == 'A') {
-                chosen = Direction.LEFT;
-            }
-            workers.get(0).move(chosen);
-            checkAllBoxesLocked();
+        while(timer.tick()) {
             printMap();
-            timer.tick();
+            System.out.println();
+            char c = 'A';
+            if (c == 'P'){
+                timer.togglePaused();
+            }
+            else if (c == 'W' || c == 'A' || c == 'S' || c == 'D'){
+                Direction chosen = Direction.UP;
+                if (c == 'W') {
+                    chosen = Direction.UP;
+                } else if (c == 'D') {
+                    chosen = Direction.RIGHT;
+                } else if (c == 'S') {
+                    chosen = Direction.DOWN;
+                } else if (c == 'A') {
+                    chosen = Direction.LEFT;
+                }
+
+                for (Worker worker : workers) {
+                    worker.move(chosen);
+                }
+            }
+
+            if (allBoxesLocked() || boxes.size() < 1 || workers.size() < 1)
+                break;
         }
+
         endGame();
     }
 
@@ -66,19 +85,19 @@ public class GameEngine {
     }
 
     private void endGame(){
+        timer.stop();
         System.out.println("Game over!");
         System.out.print("Winner: Player ");
         System.out.print(getWinner());
         System.out.println();
     }
 
-    private void checkAllBoxesLocked(){
+    private boolean allBoxesLocked(){
         boolean allLocked = false;
         for(Tile tile: tiles){
             allLocked = allLocked | tile.isLocked();
         }
-        if (allLocked)
-            endGame();
+        return allLocked;
     }
 
     private int getWinner(){
@@ -91,10 +110,12 @@ public class GameEngine {
         return max;
     }
 
-    public void killWorker(Worker worker){
-        worker = null;
-        System.out.print("Worker dead!");
-        endGame();
+    public void removeWorker(Worker worker){
+        workers.remove(worker);
+    }
+
+    public void removeBox(Box box) {
+        boxes.remove(box);
     }
 
     public static String[] readLines(String filename) throws IOException {
@@ -114,15 +135,16 @@ public class GameEngine {
         //String [] lines = readLines(path);
         String[] lines = {
                 "WWWWW",
-                "WTHTW",
-                "WTSTW",
-                "WTBTW",
-                "WTPTW",
+                "WTBPW",
+                "WTTTW",
+                "WTTTW",
+                "WTTTW",
                 "WWWWW"
         };
 
         ArrayList<Tile> tiles  = new ArrayList<Tile>();
         ArrayList<Worker> workers= new ArrayList<Worker>();
+        ArrayList<Box> boxes = new ArrayList<>();
 
         int mapHeight = lines.length;
         int mapWidth  = lines[0].length();
@@ -136,6 +158,7 @@ public class GameEngine {
                     Box b = new Box();
                     b.tile = t;
                     t.setOccupiedBy(b);
+                    boxes.add(b);
                     tiles.add(t);
                 } else if (lines[i].charAt(j) == 'P') { //Player
                     Tile t = new Tile();
@@ -224,13 +247,11 @@ public class GameEngine {
             }
         }
 
-        return new GameEngine(5, tiles, workers);
+        return new GameEngine(20, tiles, workers, boxes);
     }
 
     public static void main(String[] args){
         GameEngine gameEngine = loadGame("/Users/its_behind_you/IdeaProjects/untitled1/out/production/untitled1/com/company/map.txt");
         gameEngine.startGame();
-
     }
-
 }

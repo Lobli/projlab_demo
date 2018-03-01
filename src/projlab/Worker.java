@@ -11,10 +11,11 @@ public class Worker extends GameObject {
 
     @Override
     public void move(Direction d) {
-         if (canEnter(tile.getNeighborInDirection(d), d)) {
+        Tile target = tile.getNeighborInDirection(d);
+         if (canEnter(target, d)) {
              System.out.println("Move out!");
              tile.leave(this);
-             tile.getNeighborInDirection(d).enter(this, d);
+             target.enter(this, d);
          }
      }
 
@@ -44,14 +45,11 @@ public class Worker extends GameObject {
         return t.canBeEnteredBy(this, d);
     }
 
-    public void kill(){
-        System.out.print("Worker dead!");
-        controller.killWorker(this);
-    }
-
     public void setController(GameEngine controller) {
         this.controller = controller;
     }
+
+
 
     public int getPoints() {
         return points;
@@ -59,6 +57,11 @@ public class Worker extends GameObject {
 
     public void setPoints(int points) {
         this.points = points;
+    }
+
+    @Override
+    public void removeFromGame() {
+        controller.removeWorker(this);
     }
 
     @Override

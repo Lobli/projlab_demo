@@ -33,6 +33,11 @@ public class Box extends GameObject {
     }
 
     @Override
+    public void removeFromGame() {
+        controller.removeBox(this);
+    }
+
+    @Override
     public String toString() {
         return "B";
     }
