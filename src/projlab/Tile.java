@@ -3,12 +3,10 @@ package projlab;
 import java.util.HashMap;
 
 public class Tile {
-    private boolean locked;
     protected HashMap<Direction, Tile> neighbors;
     protected GameObject occupiedBy;
 
     public Tile(){
-        locked = false;
         neighbors = new HashMap<>();
         occupiedBy = null;
     }
@@ -31,7 +29,6 @@ public class Tile {
         }
         box.tile = this;
         this.occupiedBy = box;
-        locked = checkLocked();
     }
 
     public boolean canBeEnteredBy(Worker worker, Direction goingIn){
@@ -64,36 +61,6 @@ public class Tile {
 
     public void setOccupiedBy(GameObject occupiedBy) {
         this.occupiedBy = occupiedBy;
-    }
-
-    /*
-    akkor locked egy láda, ha bármelyik két szomszédos oldalról be van határolva. Ennnél sokkal egyszerűbb ellenőrizni,
-    hogy legalább két ellentétes oldal szabad-e (a komplementer eset).
-
-    Teztesetek:
-
-        FAL                 CSEMPE
-        +-+                 +-+
-     FAL| | CSEMPE   CSEMPE | | FAL
-        +-+                 +-+
-         CSEMPE             FAL
-
-
-        TRUE                FALSE
-
-    */
-    private boolean checkLocked() {
-        boolean northIsOpen = occupiedBy.canEnter(getNeighborInDirection(Direction.UP), Direction.UP);
-        boolean southIsOpen = occupiedBy.canEnter(getNeighborInDirection(Direction.DOWN), Direction.DOWN);
-        boolean eastIsOpen = occupiedBy.canEnter(getNeighborInDirection(Direction.RIGHT), Direction.RIGHT);
-        boolean westIsOpen = occupiedBy.canEnter(getNeighborInDirection(Direction.LEFT), Direction.LEFT);
-
-        return ! ( (northIsOpen && southIsOpen) || (westIsOpen && eastIsOpen) );
-
-    }
-
-    public boolean isLocked() {
-        return locked;
     }
 
     public String toString() {

@@ -94,14 +94,14 @@ public class GameEngine {
 
     private boolean allBoxesLocked(){
         boolean allLocked = false;
-        for(Tile tile: tiles){
-            allLocked = allLocked | tile.isLocked();
+        for( Box box : boxes){
+            allLocked = allLocked | box.isLocked();
         }
         return allLocked;
     }
 
     private Worker getWinner(){
-        Worker winner = null;
+        Worker winner = workers.get(0);
         for(Worker worker: workers){
             if(worker.getPoints() > winner.getPoints()){
                 winner = worker;
