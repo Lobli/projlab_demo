@@ -119,6 +119,14 @@ public class GameEngine {
         boxes.remove(box);
     }
 
+    public void setGameTime(int gameTime) {
+        this.gameTime = gameTime;
+    }
+
+    public int getGameTime() {
+        return gameTime;
+    }
+
     public static String[] readLines(String filename) throws IOException {
             FileReader fileReader = new FileReader(filename);
 

@@ -2,7 +2,7 @@ package projlab;
 
 public class Hole extends Tile {
 
-    boolean closed;
+    private boolean closed;
 
     public Hole() {
         closed = false;
