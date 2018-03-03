@@ -7,29 +7,21 @@ public class Switch extends Tile {
         controlling = null;
     }
 
-    public void toggle(){
-        flipSwitch();
-        System.out.println("Switch toggled!");
-    }
-
     @Override
     public void enter(Box box, Direction direction) {
         super.enter(box, direction);
-        toggle();
+        controlling.setClosed(!controlling.isClosed());
     }
 
     public void setControlling(Hole controlling) {
         this.controlling = controlling;
     }
 
-    private void flipSwitch(){
-        controlling.setClosed(!controlling.isClosed());
-    }
 
     @Override
     public void leave(GameObject go) {
         super.leave(go);
-        toggle();
+        controlling.setClosed(!controlling.isClosed());
     }
 
     @Override
