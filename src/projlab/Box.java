@@ -50,14 +50,14 @@ public class Box extends GameObject {
 
     Teztesetek:
 
-        FAL                 CSEMPE
+        FAL                 FAL
         +-+                 +-+
-     FAL| | CSEMPE   CSEMPE | | FAL
+     FAL| | MEZŐ      MEZŐ  | | MEZŐ
         +-+                 +-+
-         CSEMPE             FAL
+         MEZŐ               FAL
 
 
-        TRUE                FALSE
+        !OK                 OK
 
     */
     private boolean checkLocked() {
