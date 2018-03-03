@@ -1,6 +1,12 @@
 package projlab;
 
 public class Box extends GameObject {
+    boolean locked;
+
+    public Box() {
+        this.locked = false;
+    }
+
     @Override
     public void move(Direction d) {
         tile.leave(this);
@@ -20,6 +26,7 @@ public class Box extends GameObject {
         System.out.println("Box pushed");
         tile.leave(this);
         tile.getNeighborInDirection(d).enter(this, d);
+        checkLocked();
     }
 
     @Override
@@ -31,6 +38,42 @@ public class Box extends GameObject {
     public boolean canBeOverPoweredBy(Worker w, Direction d) {
         return canEnter(tile.getNeighborInDirection(d), d);
     }
+
+    @Override
+    public void removeFromGame() {
+        controller.removeBox(this);
+    }
+
+    /*
+    akkor locked egy láda, ha bármelyik két szomszédos oldalról be van határolva. Ennnél sokkal egyszerűbb ellenőrizni,
+    hogy legalább két ellentétes oldal szabad-e (a komplementer eset).
+
+    Teztesetek:
+
+        FAL                 CSEMPE
+        +-+                 +-+
+     FAL| | CSEMPE   CSEMPE | | FAL
+        +-+                 +-+
+         CSEMPE             FAL
+
+
+        TRUE                FALSE
+
+    */
+    private boolean checkLocked() {
+        boolean northIsOpen = canEnter(tile.getNeighborInDirection(Direction.UP), Direction.UP);
+        boolean southIsOpen = canEnter(tile.getNeighborInDirection(Direction.DOWN), Direction.DOWN);
+        boolean eastIsOpen = canEnter(tile.getNeighborInDirection(Direction.RIGHT), Direction.RIGHT);
+        boolean westIsOpen = canEnter(tile.getNeighborInDirection(Direction.LEFT), Direction.LEFT);
+
+        return ! ( (northIsOpen && southIsOpen) || (westIsOpen && eastIsOpen) );
+
+    }
+
+    public boolean isLocked() {
+        return locked;
+    }
+
 
     @Override
     public String toString() {

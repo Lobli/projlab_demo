@@ -3,7 +3,7 @@ package projlab;
 public class Wall extends Tile {
     @Override
     public void enter(Worker worker, Direction direction) {
-        worker.kill();
+        worker.removeFromGame();
     }
 
     @Override

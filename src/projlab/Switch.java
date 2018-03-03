@@ -1,27 +1,14 @@
 package projlab;
 
 public class Switch extends Tile {
-    private boolean closed;
-    private Tile controlling;
+    private Hole controlling;
 
     public Switch() {
-        closed = true;
         controlling = null;
     }
 
     public void toggle(){
-        closed = !closed;
-        /*
-        Tile t;
-        if (closed){
-            t = new Tile();
-        }
-        else {
-            t = new Hole();
-        }
-        t.setNeighbors(controlling.neighbors);
-        setControlling(t);
-        */
+        flipSwitch();
         System.out.println("Switch toggled!");
     }
 
@@ -31,8 +18,12 @@ public class Switch extends Tile {
         toggle();
     }
 
-    public void setControlling(Tile controlling) {
+    public void setControlling(Hole controlling) {
         this.controlling = controlling;
+    }
+
+    private void flipSwitch(){
+        controlling.setClosed(!controlling.isClosed());
     }
 
     @Override

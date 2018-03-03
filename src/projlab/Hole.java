@@ -1,19 +1,35 @@
 package projlab;
 
 public class Hole extends Tile {
-    @Override
-    public void enter(Box b, Direction d) {
-        removeBox(b);
+
+    boolean closed;
+
+    public Hole() {
+        closed = false;
     }
 
-    void removeBox(Box b){
-        b = null;
+    public void setClosed(boolean closed) {
+        this.closed = closed;
     }
+
+    public boolean isClosed() {
+        return closed;
+    }
+
+    @Override
+    public void enter(Box b, Direction d) {
+        if (isClosed()) {
+            b.removeFromGame();
+        }
+    }
+
 
     @Override
     public void enter(Worker w, Direction d) {
         super.enter(w, d);
-        w.kill();
+        if(isClosed()) {
+            w.removeFromGame();
+        }
     }
 
     @Override

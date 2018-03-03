@@ -9,13 +9,18 @@ public class Timer {
         this.time = time;
     }
 
-    public void tick(){
+    public boolean tick() {
         if (!paused) {
-            reduceTime();
+            return (time -= 1) > 0;
         }
+        return true;
     }
 
-    public void togglePaused(){
+    public void stop(){
+        setTime(0);
+    }
+
+    public void togglePaused() {
         setPaused(!paused);
     }
 
@@ -25,13 +30,5 @@ public class Timer {
 
     public void setTime(int time) {
         this.time = time;
-    }
-
-    public int getTime() {
-        return time;
-    }
-
-    public void reduceTime() {
-        time -= 1;
     }
 }
