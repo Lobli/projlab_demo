@@ -68,7 +68,7 @@ public class GameEngine {
                 }
             }
 
-            if (allBoxesLocked() || boxes.size() < 1 || workers.size() < 1)
+            if (allBoxesLocked() || boxes.size() < 1 || workers.size() <= 1)
                 break;
         }
 
@@ -94,7 +94,7 @@ public class GameEngine {
 
     private boolean allBoxesLocked(){
         boolean allLocked = false;
-        for( Box box : boxes){
+        for(Box box : boxes) {
             allLocked = allLocked | box.isLocked();
         }
         return allLocked;

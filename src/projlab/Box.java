@@ -26,7 +26,7 @@ public class Box extends GameObject {
         System.out.println("Box pushed");
         tile.leave(this);
         tile.getNeighborInDirection(d).enter(this, d);
-        checkLocked();
+        locked = checkLocked();
     }
 
     @Override
@@ -67,6 +67,7 @@ public class Box extends GameObject {
         boolean westIsOpen = canEnter(tile.getNeighborInDirection(Direction.LEFT), Direction.LEFT);
 
         return ! ( (northIsOpen && southIsOpen) || (westIsOpen && eastIsOpen) );
+
 
     }
 
