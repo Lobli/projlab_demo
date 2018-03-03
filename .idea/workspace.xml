@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c95da17-6664-4597-8f73-d4d1f1194a85" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/projlab/Box.java" afterPath="$PROJECT_DIR$/src/projlab/Box.java" />
       <change beforePath="$PROJECT_DIR$/src/projlab/GameEngine.java" afterPath="$PROJECT_DIR$/src/projlab/GameEngine.java" />
+      <change beforePath="$PROJECT_DIR$/src/projlab/Worker.java" afterPath="$PROJECT_DIR$/src/projlab/Worker.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,16 +21,14 @@
       <file leaf-file-name="GameEngine.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/projlab/GameEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="70" column="73" lean-forward="false" selection-start-line="70" selection-start-column="73" selection-end-line="70" selection-end-column="73" />
+            <state relative-caret-position="226">
+              <caret line="70" column="76" lean-forward="true" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="76" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#GameEngine#0;class#GameEngine#0" expanded="false" />
                 <element signature="method#startGame#0;class#GameEngine#0" expanded="false" />
                 <element signature="method#printMap#0;class#GameEngine#0" expanded="false" />
-                <element signature="method#endGame#0;class#GameEngine#0" expanded="false" />
                 <element signature="method#readLines#0;class#GameEngine#0" expanded="false" />
-                <element signature="method#loadGame#0;class#GameEngine#0" expanded="false" />
                 <element signature="method#main#0;class#GameEngine#0" expanded="false" />
               </folding>
             </state>
@@ -51,7 +48,7 @@
       <file leaf-file-name="TargetTile.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/projlab/TargetTile.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
+            <state relative-caret-position="180">
               <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
               <folding>
                 <element signature="e#112#113#0" expanded="true" />
@@ -66,7 +63,7 @@
       <file leaf-file-name="Switch.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/projlab/Switch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
+            <state relative-caret-position="390">
               <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
               <folding>
                 <element signature="e#104#105#0" expanded="true" />
@@ -112,37 +109,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Box.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/projlab/Box.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="28" column="17" lean-forward="false" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
-              <folding>
-                <element signature="e#94#95#0" expanded="true" />
-                <element signature="e#129#130#0" expanded="true" />
-                <element signature="e#760#761#0" expanded="true" />
-                <element signature="e#826#827#0" expanded="true" />
-                <element signature="e#904#905#0" expanded="true" />
-                <element signature="e#970#971#0" expanded="true" />
-                <element signature="e#1020#1021#0" expanded="true" />
-                <element signature="e#1062#1063#0" expanded="true" />
-                <element signature="e#2049#2050#0" expanded="true" />
-                <element signature="e#2078#2079#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Worker.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/projlab/Worker.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="200">
+              <caret line="54" column="8" lean-forward="false" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="20" />
               <folding>
-                <element signature="method#Worker#0;class#Worker#0" expanded="false" />
                 <element signature="method#canEnter#0;class#Worker#0" expanded="false" />
-                <element signature="e#1261#1262#0" expanded="true" />
-                <element signature="e#1290#1291#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -151,7 +124,7 @@
       <file leaf-file-name="Hole.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/projlab/Hole.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
+            <state relative-caret-position="435">
               <caret line="31" column="9" lean-forward="false" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
               <folding>
                 <element signature="e#91#92#0" expanded="true" />
@@ -182,6 +155,16 @@
                 <element signature="e#535#536#0" expanded="true" />
                 <element signature="e#567#568#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Wall.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/projlab/Wall.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -223,12 +206,12 @@
         <option value="$PROJECT_DIR$/src/projlab/Wall.java" />
         <option value="$PROJECT_DIR$/src/projlab/Timer.java" />
         <option value="$PROJECT_DIR$/src/projlab/Direction.java" />
-        <option value="$PROJECT_DIR$/src/projlab/Worker.java" />
         <option value="$PROJECT_DIR$/src/projlab/GameObject.java" />
         <option value="$PROJECT_DIR$/src/projlab/Hole.java" />
         <option value="$PROJECT_DIR$/src/projlab/Switch.java" />
         <option value="$PROJECT_DIR$/src/projlab/Tile.java" />
         <option value="$PROJECT_DIR$/src/projlab/Box.java" />
+        <option value="$PROJECT_DIR$/src/projlab/Worker.java" />
         <option value="$PROJECT_DIR$/src/projlab/GameEngine.java" />
       </list>
     </option>
@@ -478,7 +461,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="39" />
+      <option name="time" value="42" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -522,10 +505,7 @@
         <state relative-caret-position="300">
           <caret line="23" column="25" lean-forward="false" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
           <folding>
-            <element signature="method#Worker#0;class#Worker#0" expanded="false" />
             <element signature="method#canEnter#0;class#Worker#0" expanded="false" />
-            <element signature="e#1261#1262#0" expanded="true" />
-            <element signature="e#1290#1291#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -575,9 +555,7 @@
             <element signature="method#GameEngine#0;class#GameEngine#0" expanded="false" />
             <element signature="method#startGame#0;class#GameEngine#0" expanded="false" />
             <element signature="method#printMap#0;class#GameEngine#0" expanded="false" />
-            <element signature="method#endGame#0;class#GameEngine#0" expanded="false" />
             <element signature="method#readLines#0;class#GameEngine#0" expanded="false" />
-            <element signature="method#loadGame#0;class#GameEngine#0" expanded="false" />
             <element signature="method#main#0;class#GameEngine#0" expanded="false" />
           </folding>
         </state>
@@ -633,10 +611,7 @@
         <state relative-caret-position="210">
           <caret line="16" column="23" lean-forward="false" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
           <folding>
-            <element signature="method#Worker#0;class#Worker#0" expanded="false" />
             <element signature="method#canEnter#0;class#Worker#0" expanded="false" />
-            <element signature="e#1261#1262#0" expanded="true" />
-            <element signature="e#1290#1291#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -665,9 +640,7 @@
             <element signature="method#GameEngine#0;class#GameEngine#0" expanded="false" />
             <element signature="method#startGame#0;class#GameEngine#0" expanded="false" />
             <element signature="method#printMap#0;class#GameEngine#0" expanded="false" />
-            <element signature="method#endGame#0;class#GameEngine#0" expanded="false" />
             <element signature="method#readLines#0;class#GameEngine#0" expanded="false" />
-            <element signature="method#loadGame#0;class#GameEngine#0" expanded="false" />
             <element signature="method#main#0;class#GameEngine#0" expanded="false" />
           </folding>
         </state>
@@ -723,10 +696,7 @@
         <state relative-caret-position="210">
           <caret line="16" column="23" lean-forward="true" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="23" />
           <folding>
-            <element signature="method#Worker#0;class#Worker#0" expanded="false" />
             <element signature="method#canEnter#0;class#Worker#0" expanded="false" />
-            <element signature="e#1261#1262#0" expanded="true" />
-            <element signature="e#1290#1291#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -755,9 +725,7 @@
             <element signature="method#GameEngine#0;class#GameEngine#0" expanded="false" />
             <element signature="method#startGame#0;class#GameEngine#0" expanded="false" />
             <element signature="method#printMap#0;class#GameEngine#0" expanded="false" />
-            <element signature="method#endGame#0;class#GameEngine#0" expanded="false" />
             <element signature="method#readLines#0;class#GameEngine#0" expanded="false" />
-            <element signature="method#loadGame#0;class#GameEngine#0" expanded="false" />
             <element signature="method#main#0;class#GameEngine#0" expanded="false" />
           </folding>
         </state>
@@ -828,10 +796,7 @@
         <state relative-caret-position="165">
           <caret line="12" column="8" lean-forward="false" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="37" />
           <folding>
-            <element signature="method#Worker#0;class#Worker#0" expanded="false" />
             <element signature="method#canEnter#0;class#Worker#0" expanded="false" />
-            <element signature="e#1261#1262#0" expanded="true" />
-            <element signature="e#1290#1291#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -893,10 +858,7 @@
         <state relative-caret-position="60">
           <caret line="4" column="20" lean-forward="true" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
           <folding>
-            <element signature="method#Worker#0;class#Worker#0" expanded="false" />
             <element signature="method#canEnter#0;class#Worker#0" expanded="false" />
-            <element signature="e#1261#1262#0" expanded="true" />
-            <element signature="e#1290#1291#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -963,9 +925,7 @@
             <element signature="method#GameEngine#0;class#GameEngine#0" expanded="false" />
             <element signature="method#startGame#0;class#GameEngine#0" expanded="false" />
             <element signature="method#printMap#0;class#GameEngine#0" expanded="false" />
-            <element signature="method#endGame#0;class#GameEngine#0" expanded="false" />
             <element signature="method#readLines#0;class#GameEngine#0" expanded="false" />
-            <element signature="method#loadGame#0;class#GameEngine#0" expanded="false" />
             <element signature="method#main#0;class#GameEngine#0" expanded="false" />
           </folding>
         </state>
@@ -1020,15 +980,102 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/projlab/Wall.java">
+    <entry file="file://$PROJECT_DIR$/src/projlab/Box.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+        <state relative-caret-position="217">
+          <caret line="28" column="17" lean-forward="false" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
           <folding>
-            <element signature="e#123#124#0" expanded="false" />
-            <element signature="e#162#163#0" expanded="false" />
-            <element signature="e#541#542#0" expanded="false" />
-            <element signature="e#567#568#0" expanded="false" />
+            <element signature="e#94#95#0" expanded="true" />
+            <element signature="e#129#130#0" expanded="true" />
+            <element signature="e#760#761#0" expanded="true" />
+            <element signature="e#826#827#0" expanded="true" />
+            <element signature="e#904#905#0" expanded="true" />
+            <element signature="e#970#971#0" expanded="true" />
+            <element signature="e#1020#1021#0" expanded="true" />
+            <element signature="e#1062#1063#0" expanded="true" />
+            <element signature="e#2049#2050#0" expanded="true" />
+            <element signature="e#2078#2079#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/projlab/Direction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding>
+            <element signature="e#199#200#0" expanded="true" />
+            <element signature="e#259#260#0" expanded="true" />
+            <element signature="e#305#306#0" expanded="true" />
+            <element signature="e#346#347#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/projlab/GameObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="24" column="41" lean-forward="false" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/projlab/Hole.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="31" column="9" lean-forward="false" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+          <folding>
+            <element signature="e#91#92#0" expanded="true" />
+            <element signature="e#121#122#0" expanded="true" />
+            <element signature="e#166#167#0" expanded="true" />
+            <element signature="e#202#203#0" expanded="true" />
+            <element signature="e#235#236#0" expanded="true" />
+            <element signature="e#264#265#0" expanded="true" />
+            <element signature="e#606#607#0" expanded="true" />
+            <element signature="e#632#633#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/projlab/Switch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding>
+            <element signature="e#104#105#0" expanded="true" />
+            <element signature="e#138#139#0" expanded="true" />
+            <element signature="e#422#423#0" expanded="true" />
+            <element signature="e#468#469#0" expanded="true" />
+            <element signature="e#500#501#0" expanded="true" />
+            <element signature="e#562#563#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/projlab/TargetTile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+          <folding>
+            <element signature="e#112#113#0" expanded="true" />
+            <element signature="e#146#147#0" expanded="true" />
+            <element signature="e#343#344#0" expanded="true" />
+            <element signature="e#369#370#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/projlab/Tile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
+          <folding>
+            <element signature="e#279#280#0" expanded="true" />
+            <element signature="e#317#318#0" expanded="true" />
+            <element signature="method#canBeEnteredBy#0;class#Tile#0" expanded="false" />
+            <element signature="method#canBeEnteredBy#1;class#Tile#0" expanded="false" />
+            <element signature="e#1688#1689#0" expanded="true" />
+            <element signature="e#1759#1760#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1050,131 +1097,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/projlab/Direction.java">
+    <entry file="file://$PROJECT_DIR$/src/projlab/Wall.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding>
-            <element signature="e#199#200#0" expanded="true" />
-            <element signature="e#259#260#0" expanded="true" />
-            <element signature="e#305#306#0" expanded="true" />
-            <element signature="e#346#347#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/projlab/TargetTile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="12" column="27" lean-forward="false" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
-          <folding>
-            <element signature="e#112#113#0" expanded="true" />
-            <element signature="e#146#147#0" expanded="true" />
-            <element signature="e#343#344#0" expanded="true" />
-            <element signature="e#369#370#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/projlab/Worker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="200">
+          <caret line="54" column="8" lean-forward="false" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="20" />
           <folding>
-            <element signature="method#Worker#0;class#Worker#0" expanded="false" />
             <element signature="method#canEnter#0;class#Worker#0" expanded="false" />
-            <element signature="e#1261#1262#0" expanded="true" />
-            <element signature="e#1290#1291#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/projlab/GameObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="24" column="41" lean-forward="false" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/projlab/Hole.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="31" column="9" lean-forward="false" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
-          <folding>
-            <element signature="e#91#92#0" expanded="true" />
-            <element signature="e#121#122#0" expanded="true" />
-            <element signature="e#166#167#0" expanded="true" />
-            <element signature="e#202#203#0" expanded="true" />
-            <element signature="e#235#236#0" expanded="true" />
-            <element signature="e#264#265#0" expanded="true" />
-            <element signature="e#606#607#0" expanded="true" />
-            <element signature="e#632#633#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/projlab/Switch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="26" column="5" lean-forward="false" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <element signature="e#104#105#0" expanded="true" />
-            <element signature="e#138#139#0" expanded="true" />
-            <element signature="e#422#423#0" expanded="true" />
-            <element signature="e#468#469#0" expanded="true" />
-            <element signature="e#500#501#0" expanded="true" />
-            <element signature="e#562#563#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/projlab/Tile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="23" lean-forward="false" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
-          <folding>
-            <element signature="e#279#280#0" expanded="true" />
-            <element signature="e#317#318#0" expanded="true" />
-            <element signature="method#canBeEnteredBy#0;class#Tile#0" expanded="false" />
-            <element signature="method#canBeEnteredBy#1;class#Tile#0" expanded="false" />
-            <element signature="e#1688#1689#0" expanded="true" />
-            <element signature="e#1759#1760#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/projlab/Box.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="28" column="17" lean-forward="false" selection-start-line="28" selection-start-column="17" selection-end-line="28" selection-end-column="17" />
-          <folding>
-            <element signature="e#94#95#0" expanded="true" />
-            <element signature="e#129#130#0" expanded="true" />
-            <element signature="e#760#761#0" expanded="true" />
-            <element signature="e#826#827#0" expanded="true" />
-            <element signature="e#904#905#0" expanded="true" />
-            <element signature="e#970#971#0" expanded="true" />
-            <element signature="e#1020#1021#0" expanded="true" />
-            <element signature="e#1062#1063#0" expanded="true" />
-            <element signature="e#2049#2050#0" expanded="true" />
-            <element signature="e#2078#2079#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/projlab/GameEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="70" column="73" lean-forward="false" selection-start-line="70" selection-start-column="73" selection-end-line="70" selection-end-column="73" />
+        <state relative-caret-position="226">
+          <caret line="70" column="76" lean-forward="true" selection-start-line="70" selection-start-column="12" selection-end-line="70" selection-end-column="76" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#GameEngine#0;class#GameEngine#0" expanded="false" />
             <element signature="method#startGame#0;class#GameEngine#0" expanded="false" />
             <element signature="method#printMap#0;class#GameEngine#0" expanded="false" />
-            <element signature="method#endGame#0;class#GameEngine#0" expanded="false" />
             <element signature="method#readLines#0;class#GameEngine#0" expanded="false" />
-            <element signature="method#loadGame#0;class#GameEngine#0" expanded="false" />
             <element signature="method#main#0;class#GameEngine#0" expanded="false" />
           </folding>
         </state>

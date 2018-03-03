@@ -3,10 +3,12 @@ package projlab;
 public class Worker extends GameObject {
     private int points;
     private GameEngine controller;
+    private String name;
 
-    public Worker(){
-        points = 0;
-        this.controller = controller;
+    public Worker(String name){
+        this.name = name;
+        this.points = 0;
+        this.controller = null;
     }
 
     @Override
@@ -49,7 +51,9 @@ public class Worker extends GameObject {
         this.controller = controller;
     }
 
-
+    public String getName() {
+        return name;
+    }
 
     public int getPoints() {
         return points;

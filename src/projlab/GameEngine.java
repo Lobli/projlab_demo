@@ -86,9 +86,10 @@ public class GameEngine {
 
     private void endGame(){
         timer.stop();
+        Worker winner = getWinner();
         System.out.println("Game over!");
-        System.out.print("Winner: Player ");
-        System.out.print(getWinner());
+        System.out.print("Winner: ");
+        System.out.print(winner.getName());
         System.out.println();
     }
 
@@ -162,7 +163,7 @@ public class GameEngine {
                     tiles.add(t);
                 } else if (lines[i].charAt(j) == 'P') { //Player
                     Tile t = new Tile();
-                    Worker w = new Worker();
+                    Worker w = new Worker("Player 1");
                     t.setOccupiedBy(w);
                     w.tile = t;
                     workers.add(w);
