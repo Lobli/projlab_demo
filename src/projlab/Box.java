@@ -65,7 +65,7 @@ public class Box extends GameObject {
         boolean southIsOpen = canEnter(tile.getNeighborInDirection(Direction.DOWN), Direction.DOWN);
         boolean eastIsOpen = canEnter(tile.getNeighborInDirection(Direction.RIGHT), Direction.RIGHT);
         boolean westIsOpen = canEnter(tile.getNeighborInDirection(Direction.LEFT), Direction.LEFT);
-
+        System.out.println("lock checked");
         return ! ( (northIsOpen && southIsOpen) || (westIsOpen && eastIsOpen) );
 
 

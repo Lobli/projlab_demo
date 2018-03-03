@@ -18,7 +18,7 @@ public class Hole extends Tile {
 
     @Override
     public void enter(Box b, Direction d) {
-        if (isClosed()) {
+        if (closed) {
             b.removeFromGame();
         }
     }
@@ -27,7 +27,7 @@ public class Hole extends Tile {
     @Override
     public void enter(Worker w, Direction d) {
         super.enter(w, d);
-        if(isClosed()) {
+        if(closed) {
             w.removeFromGame();
         }
     }

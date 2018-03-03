@@ -47,7 +47,7 @@ public class GameEngine {
         while(timer.tick()) {
             printMap();
             System.out.println();
-            char c = 'A';
+            char c = 'W';
             if (c == 'P'){
                 timer.togglePaused();
             }
@@ -68,7 +68,7 @@ public class GameEngine {
                 }
             }
 
-            if (allBoxesLocked() || boxes.size() < 1 || workers.size() <= 1)
+            if (allBoxesLocked() || boxes.size() < 1 || workers.size() < 1) //valóságban <= 1
                 break;
         }
 
@@ -144,10 +144,10 @@ public class GameEngine {
         //String [] lines = readLines(path);
         String[] lines = {
                 "WWWWW",
-                "WTBPW",
                 "WTTTW",
                 "WTTTW",
-                "WTTTW",
+                "WTBTW",
+                "WTPTW",
                 "WWWWW"
         };
 
