@@ -11,7 +11,11 @@ public class Timer {
 
     public boolean tick() {
         if (!paused) {
-            return (time -= 1) > 0;
+            time -= 1;
+                if (time > 0){
+                    return true;
+                }
+                return false;
         }
         return true;
     }
