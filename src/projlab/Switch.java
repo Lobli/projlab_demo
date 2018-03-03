@@ -11,15 +11,16 @@ public class Switch extends Tile {
 
     public void toggle(){
         flipSwitch();
-        Tile t;
+        Tile newTile;
         if (closed){
-            t = new Tile();
+            newTile = new Tile();
         }
         else {
-            t = new Hole();
+            newTile = new Hole();
         }
-        t.neighbors = controlling.neighbors;
-        setControlling(t);
+        newTile.neighbors = controlling.neighbors;
+        newTile.setOccupiedBy(controlling.occupiedBy);
+        this.setControlling(newTile);
         System.out.println("Switch toggled!");
     }
 

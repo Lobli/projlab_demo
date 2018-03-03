@@ -1,6 +1,10 @@
 package projlab;
 
 public class Hole extends Tile {
+
+    public Hole() {
+    }
+
     @Override
     public void enter(Box b, Direction d) {
         b.removeFromGame();

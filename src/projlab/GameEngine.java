@@ -100,14 +100,14 @@ public class GameEngine {
         return allLocked;
     }
 
-    private int getWinner(){
-        int max = 0;
+    private Worker getWinner(){
+        Worker winner = null;
         for(Worker worker: workers){
-            if(worker.getPoints() > max){
-                max = worker.getPoints();
+            if(worker.getPoints() > winner.getPoints()){
+                winner = worker;
             }
         }
-        return max;
+        return winner;
     }
 
     public void removeWorker(Worker worker){
