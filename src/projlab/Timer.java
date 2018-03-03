@@ -17,18 +17,10 @@ public class Timer {
     }
 
     public void stop(){
-        setTime(0);
+        time = 0;
     }
 
     public void togglePaused() {
-        setPaused(!paused);
-    }
-
-    public void setPaused(boolean paused) {
-        this.paused = paused;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
+        paused = !paused;
     }
 }
