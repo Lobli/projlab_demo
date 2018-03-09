@@ -10,21 +10,24 @@ public class Timer {
     }
 
     public boolean tick() {
-        if (!paused) {
-            time -= 1;
-                if (time > 0){
-                    return true;
-                }
-                return false;
+        SkeletonHelper.call("timer", "", "tick");
+        if (!SkeletonHelper.decide("Szüntelve van a játék?")) {
+            SkeletonHelper.returnF();
+            return SkeletonHelper.decide("Lejárt már az idő?");
         }
+        SkeletonHelper.returnF();
         return true;
     }
 
     public void stop(){
+        SkeletonHelper.call("timer", "", "stop");
+        SkeletonHelper.returnF();
         time = 0;
     }
 
     public void togglePaused() {
+        SkeletonHelper.call("timer", "", "togglePaused");
+        SkeletonHelper.returnF();
         paused = !paused;
     }
 }

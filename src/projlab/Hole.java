@@ -4,7 +4,8 @@ public class Hole extends Tile {
 
     private boolean closed;
 
-    public Hole() {
+    public Hole(String name) {
+        super(name);
         closed = false;
     }
 
@@ -18,18 +19,22 @@ public class Hole extends Tile {
 
     @Override
     public void enter(Box b, Direction d) {
-        if (closed) {
+        SkeletonHelper.call(name, new String[]{b.name, d.toString()}, "enter");
+        if (SkeletonHelper.decide("Be van zárva a lyuk?")) {
             b.removeFromGame();
         }
+        SkeletonHelper.returnF();
     }
 
 
     @Override
     public void enter(Worker w, Direction d) {
+        SkeletonHelper.call(name, new String[]{w.name, d.toString()}, "enter");
         super.enter(w, d);
-        if(closed) {
+        if(SkeletonHelper.decide("Be van zárva a lyuk?")) {
             w.removeFromGame();
         }
+        SkeletonHelper.returnF();
     }
 
     @Override

@@ -1,20 +1,28 @@
 package projlab;
 
 public class Wall extends Tile {
-    @Override
-    public void enter(Worker worker, Direction direction) {
-        worker.removeFromGame();
+    public Wall(String name) {
+        super(name);
     }
 
     @Override
-    public boolean canBeEnteredBy(Box box, Direction goingIn) {
-        System.out.println("A box cannot enter wall");
+    public void enter(Worker worker, Direction direction) {
+        SkeletonHelper.call(name, new String[]{worker.name, direction.toString()}, "enter");
+        worker.removeFromGame();
+        SkeletonHelper.returnF();
+    }
+
+    @Override
+    public boolean canBeEnteredBy(Box box, Direction direction) {
+        SkeletonHelper.call(name, new String[]{box.name, direction.toString()}, "canBeEnteredBy");
+        SkeletonHelper.returnF();
         return false;
     }
 
     @Override
-    public boolean canBeEnteredBy(Worker worker, Direction goingIn) {
-        System.out.println("A worker cannot enter wall");
+    public boolean canBeEnteredBy(Worker worker, Direction direction) {
+        SkeletonHelper.call(name, new String[]{worker.name, direction.toString()}, "canBeEnteredBy");
+        SkeletonHelper.returnF();
         return false;
     }
 
