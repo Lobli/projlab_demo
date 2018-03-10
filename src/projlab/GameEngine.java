@@ -106,11 +106,11 @@ public class GameEngine {
     }
 
     public static void main(String[] args){
-        String[] simpleMap = { "t1+W1|t2+B2|t3" };
+        String[] simpleMap = { "tile1+worker1|tile2+box2|wall1" };
         String[] complexMap = {
-                "t1|s1+h1|w1",
-                "t2|h1|w2",
-                "t3+W1|t4|t5"
+                "tile1|switch1+hole1|wall1",
+                "tile2|hole1|wall2",
+                "tile3+worker1|tile4|tile5"
         };
 
         SkeletonHelper.addScenario(new Scenario("simple", "D", simpleMap));

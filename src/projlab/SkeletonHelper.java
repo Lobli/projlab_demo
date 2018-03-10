@@ -62,7 +62,7 @@ public class SkeletonHelper {
                 System.out.println(out);
             }
 
-            int choice = 1; //Integer.parseInt(System.console().readLine());
+            int choice = 0; //Integer.parseInt(System.console().readLine());
 
             scenarios.get(choice).run();
         //}

@@ -27,16 +27,16 @@ public class Map {
     }
 
     private void parseCombo(String one, String two) /*throws Exception*/ {
-        if(one.charAt(0) == 't'){               // valami tile-on áll
+        if(one.contains("tile")){               // valami tile-on áll
             Tile t = new Tile(one);
             tiles.add(t);
-            if (two.charAt(0) == 'W'){          // Worker
+            if (two.contains("worker")){          // Worker
                 Worker w = new Worker(two);
                 w.setTile(t);
                 t.setOccupiedBy(w);
                 workers.add(w);
             }
-            else if (two.charAt(0) == 'B'){     //Box
+            else if (two.contains("box")){     //Box
                 Box b = new Box(two);
                 b.setTile(t);
                 t.setOccupiedBy(b);
@@ -46,7 +46,7 @@ public class Map {
                 // throw new Exception("Invalid field token");
             }
         }
-        else if (one.charAt(0) == 's'){         // switch (nem állhat rajta semmi)
+        else if (one.contains("switch")){         // switch (nem állhat rajta semmi)
             if (switches.containsKey(two)){     //már volt a switch által irányított hole
                 Switch s = new Switch(one);
                 Hole h = (Hole)switches.remove(two);
@@ -67,15 +67,15 @@ public class Map {
     }
 
     private void parseSingle(String field) /* throws Exception */ {
-        if (field.charAt(0) == 't'){           //magában álló tile
+        if (field.contains("tile")){           //magában álló tile
             Tile t =  new Tile(field);
             tiles.add(t);
         }
-        else if (field.charAt(0) == 'w'){      // wall
+        else if (field.contains("wall")){      // wall
             Wall w = new Wall(field);
             tiles.add(w);
         }
-        else if (field.charAt(0) == 'h'){       //hole
+        else if (field.contains("hole")){       //hole
             if (switches.containsKey(field)){   //már volt a hole (egy switch-ben megadva)
                 tiles.add(switches.remove(field));
             }
