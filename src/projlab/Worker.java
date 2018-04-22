@@ -68,7 +68,7 @@ public class Worker extends GameObject {
     /**
         Konstruktor
         
-        @param t A munkás által elfoglalt Tile
+        @param t    A munkás által elfoglalt Tile
         @param name a munkás neve
     */
     public Worker(Tile t, String name) {
@@ -79,9 +79,9 @@ public class Worker extends GameObject {
     /**
         Konstrukor, ahol ez erőt is meg lehet adni
         
-        @param t A munkás által elfoglalt Tile
-        @param name a munkás neve
-        @param force a munkás ereje
+        @param t        A munkás által elfoglalt Tile
+        @param name     a munkás neve
+        @param force    a munkás ereje
     */
     public Worker(Tile t, String name, int force) {
         this.tile = t;
@@ -95,7 +95,7 @@ public class Worker extends GameObject {
         
         @param tokens       a térképfile tokenek-re szétszedve
         @param t            a munkás által elfoglalt mező
-        @returns            a munkás megfelelően inicializált példányával.
+        @return             a munkás megfelelően inicializált példányával.
         @throws SyntaxError ha nem a térképleíró nyelv szabályainak megfelelő struktúrát
                             talál
     */
@@ -180,6 +180,7 @@ public class Worker extends GameObject {
              target.enter(this, d);
          }
      }
+    
     /**
          A munkásra vonatkozó viselkedést megvalósító metódus.
     */
@@ -218,6 +219,7 @@ public class Worker extends GameObject {
 
     /**
         Visszatér a munkás nevével.
+        @return a név
     */
     public String getName() {
         return name;
@@ -244,6 +246,7 @@ public class Worker extends GameObject {
 
     /**
         Megadja, hogy a munkás irányító játékos hány pontot szerzett eddig.
+        @return a pontok száma
     */
     public int getPoints() {
         return points;
@@ -251,6 +254,7 @@ public class Worker extends GameObject {
 
     /**
         Megadja, hogy a munkás mekkora erőt fejt ki.
+        @return az erő nagysága
     */
     public double getForce() {
         return force;
