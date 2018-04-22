@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="2c95da17-6664-4597-8f73-d4d1f1194a85" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/projlab_demo/projlab/GameEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/projlab_demo/projlab/GameEngine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/projlab/GameEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projlab/GameEngine.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -22,8 +20,8 @@
       <file leaf-file-name="GameEngine.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/projlab/GameEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="139" column="25" lean-forward="true" selection-start-line="139" selection-start-column="25" selection-end-line="139" selection-end-column="25" />
+            <state relative-caret-position="1292">
+              <caret line="140" column="9" lean-forward="true" selection-start-line="140" selection-start-column="9" selection-end-line="140" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#allBoxesLocked#0;class#GameEngine#0" />
@@ -273,7 +271,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32889965" />
@@ -282,7 +279,7 @@
       <window_info id="Image Layers" />
       <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50572246" side_tool="true" weight="0.19467956" />
-      <window_info active="true" anchor="bottom" id="Run Dashboard" order="7" sideWeight="0.49427754" visible="true" weight="0.379717" />
+      <window_info active="true" anchor="bottom" id="Run Dashboard" order="7" sideWeight="0.49427754" visible="true" weight="0.32193395" />
       <window_info anchor="right" id="Maven Projects" order="3" weight="0.3297568" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32889965" />
@@ -759,8 +756,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/projlab/GameEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="139" column="25" lean-forward="true" selection-start-line="139" selection-start-column="25" selection-end-line="139" selection-end-column="25" />
+        <state relative-caret-position="1292">
+          <caret line="140" column="9" lean-forward="true" selection-start-line="140" selection-start-column="9" selection-end-line="140" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#allBoxesLocked#0;class#GameEngine#0" />
