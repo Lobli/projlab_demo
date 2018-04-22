@@ -123,11 +123,12 @@ public class GameEngine {
     }
 
     private boolean allBoxesLocked(){
+        boolean temp = true;
         for(Box box : map.boxes) {
-            if (box.isLocked())
-                return true;
+            if (box.isLocked() == false)
+                temp = false;
         }
-        return false;
+        return temp;
     }
 
     private Worker getWinner(){
