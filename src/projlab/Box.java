@@ -37,7 +37,7 @@ public class Box extends GameObject {
     * @param tokens         A térképfile tokenek-re szétszedve
     * @param t              Az a csempe, amelyiken a doboz a játék kezdetekor tartozkodik
     * @throws SyntaxError   Ha nem a térképleíró nyelv szabályainak megfelelő struktúrát
-                            talál
+    *                       talál
     */
     public static Box fromString(ArrayList<String> tokens, Tile t) throws SyntaxError {
         int weight = -1;
