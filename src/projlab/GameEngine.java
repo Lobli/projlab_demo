@@ -111,6 +111,7 @@ public class GameEngine {
         timer.stop();
         Worker winner = getWinner();
         if (winner == null){
+            System.out.println("GAME OVER!");
             System.out.println("IT'S A TIE!");
         }
         else {
@@ -130,16 +131,11 @@ public class GameEngine {
     }
 
     private Worker getWinner(){
-        Worker winner = map.workers.get(0);
-        for(Worker worker: map.workers){
-            if(worker.getPoints() > winner.getPoints()){
-                winner = worker;
-            }
-            else if (worker.getPoints() == winner.getPoints()){
-                return null;
-            }
+        if (map.workers.get(0).getPoints() < map.workers.get(1).getPoints()){
+            return map.workers.get(1);
         }
-        return winner;
+        else
+            return map.workers.get(0);
     }
 
     public void removeWorker(Worker worker){
