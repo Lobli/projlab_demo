@@ -111,11 +111,11 @@ public class GameEngine {
         timer.stop();
         Worker winner = getWinner();
         if (winner == null){
-            System.out.println("GAME OVER!");
+            System.out.println("\nGAME OVER!");
             System.out.println("IT'S A TIE!");
         }
         else {
-            System.out.println("GAME OVER!");
+            System.out.println("\nGAME OVER!");
             System.out.print("WINNER: ");
             System.out.print(winner.getName());
             System.out.println();
