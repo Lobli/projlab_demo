@@ -15,7 +15,7 @@ public class GameEngine {
 
     public GameEngine() throws SyntaxError, IOException {
         timer = setTimer();
-        map = chooseMap();
+        map = new Map(new File("maps/Tests.bkml").getAbsolutePath());
         startGame();
     }
 
