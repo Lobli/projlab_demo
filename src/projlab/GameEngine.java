@@ -134,8 +134,10 @@ public class GameEngine {
         if (map.workers.get(0).getPoints() < map.workers.get(1).getPoints()){
             return map.workers.get(1);
         }
-        else
+        if (map.workers.get(1).getPoints() < map.workers.get(0).getPoints()){
             return map.workers.get(0);
+        }
+        else return null;
     }
 
     public void removeWorker(Worker worker){
