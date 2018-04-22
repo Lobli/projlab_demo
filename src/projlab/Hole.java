@@ -34,6 +34,11 @@ public class Hole extends Tile {
 
     @Override
     public String toString() {
-        return closed ? "T " : "H ";
+        if (closed){
+            if (occupiedBy == null){
+                return "T ";}
+            else
+                return occupiedBy.toString();}
+        else return "H ";
     }
 }
