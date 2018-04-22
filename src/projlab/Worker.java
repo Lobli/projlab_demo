@@ -93,8 +93,9 @@ public class Worker extends GameObject {
         Egy adott munkást olvas be a térképfájlból, és
         visszatér a munkás megfelelően inicializált példányával.
         
-        @param tokens a térképfile tokenek-re szétszedve
-        @param t a munkás által elfoglalt mező
+        @param tokens       a térképfile tokenek-re szétszedve
+        @param t            a munkás által elfoglalt mező
+        @returns            a munkás megfelelően inicializált példányával.
         @throws SyntaxError ha nem a térképleíró nyelv szabályainak megfelelő struktúrát
                             talál
     */
@@ -271,6 +272,7 @@ public class Worker extends GameObject {
     
     /**
         Visszatér a munkás jelkódjával, ami a nevének az első betűjének felel meg.
+        @returns a jelkód
     */
     @Override
     public String toString() {
