@@ -27,6 +27,7 @@ public class Wall extends Tile {
 
     /**
         Visszatér a fal jelkódjával ("W").
+        @returns a jelkód
     */
     @Override
     public String toString() {
