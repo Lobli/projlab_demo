@@ -12,6 +12,11 @@ public class Wall extends Tile {
     }
     
     /**
+        Megadja, hogy egy doboz beléphet-e erre a mezőre
+        @param box      a belépó doboz
+        @param goingIn  a mozgás iránya
+        @param force    a nyomás erőssége
+        @return         false
     */
     @Override
     public boolean canBeEnteredBy(Box box, Direction goingIn, double force) {
@@ -19,6 +24,11 @@ public class Wall extends Tile {
     }
 
     /**
+        Megadja, hogy egy munkás beléphet-e erre a mezőre
+        @param worker      a belépó munkás
+        @param goingIn      a mozgás iránya
+        @param force        a nyomás erőssége
+        @return             false
     */
     @Override
     public boolean canBeEnteredBy(Worker worker, Direction goingIn, double force) {
@@ -27,7 +37,7 @@ public class Wall extends Tile {
 
     /**
         Visszatér a fal jelkódjával ("W").
-        @returns a jelkód
+        @return a jelkód
     */
     @Override
     public String toString() {
