@@ -131,7 +131,9 @@ public class GameEngine {
     }
 
     private Worker getWinner(){
-        if (map.workers.get(0).getPoints() < map.workers.get(1).getPoints()){
+        if (map.workers.size() ==1)
+            return map.workers.get(0);
+        if (map.workers.get(0).getPoints() < map.workers.get(1).getPoints() ){
             return map.workers.get(1);
         }
         if (map.workers.get(1).getPoints() < map.workers.get(0).getPoints()){
