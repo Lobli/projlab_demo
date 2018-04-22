@@ -30,7 +30,7 @@ public class Tile {
         
         @param m            Ehhez a térképhez tartozik a beolvasott tile
         @param tokens       a térképfile tokenekre szétszedve
-        @returns            a tile megfelelően inicializált példányával.
+        @return             a tile megfelelően inicializált példányával.
         @throws SyntaxError ha nem a térképleíró nyelv szabályainak megfelelő struktúrát
                             talál
     */
@@ -176,7 +176,7 @@ public class Tile {
         
         @param direction    a kívánt irány
         
-        @returns            null ha nincs szomszáda az adott irányban, Tile instance
+        @return             null ha nincs szomszáda az adott irányban, Tile instance
                             ha létezik
     */
     public Tile getNeighborInDirection(Direction direction){
@@ -206,7 +206,7 @@ public class Tile {
         Visszatér a mező jelkódjával, ha üres, vagy a rajta lévő anyag vagy GameObject
         jelkódjával
         
-        @returns    A jelkód
+        @return     A jelkód
     */
     public String toString() {
         if (occupiedBy != null)
