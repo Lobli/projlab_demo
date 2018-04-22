@@ -32,8 +32,8 @@ public class Box extends GameObject {
     }
 
     /**
-    * Egy adott <osztályt> olvas be a térképfájlból, és
-    * visszatér az <osztály> megfelelően inicializált példányával.
+    * Egy adott dobozt olvas be a térképfájlból, és
+    * visszatér a doboz megfelelően inicializált példányával.
     * @param tokens         A térképfile tokenek-re szétszedve
     * @param t              Az a csempe, amelyiken a doboz a játék kezdetekor tartozkodik
     * @throws SyntaxError   Ha nem a térképleíró nyelv szabályainak megfelelő struktúrát
@@ -134,7 +134,7 @@ public class Box extends GameObject {
     * Ellenőrzi, hogy a doboznak van-e két olyan egymás melletti szomszédja, ahova nem lehetséges 
     * betolni a dobozt (tehát egy munkás nem számít). Ha van, a locked flag-et igazra állítja.
     *
-    * Teztesetek:
+    * Tesztesetek:
     *
     *   FAL                 FAL
     *   +-+                 +-+
@@ -156,6 +156,7 @@ public class Box extends GameObject {
 
     /**
     * A locked getter-e.
+    * @return true ha locked, false ha még elmozdítható a doboz
     */
     public boolean isLocked() {
         return locked;
