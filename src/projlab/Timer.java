@@ -25,8 +25,8 @@ public class Timer {
     /**
         Konstruktor
        
-        @param time hány időlépésből álljon a játék
-        @param steppable léptethető legyen-e a timer
+        @param time         hány időlépésből álljon a játék
+        @param steppable    léptethető legyen-e a timer
     */
     public Timer(int time, boolean steppable) {
         this.steppable = steppable;
