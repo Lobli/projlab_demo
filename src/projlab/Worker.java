@@ -25,7 +25,7 @@ public class Worker extends GameObject {
         controls.put("e", "PUT_OIL");
         controls.put("x", "CLEAN");
         controls.put("p", "PAUSE");
-        controls.put("y", "PASS");
+        controls.put("g", "PASS");
 
         //player 2
         controls.put("i", "UP");
