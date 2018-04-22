@@ -68,8 +68,8 @@ public class Worker extends GameObject {
     /**
         Konstruktor
         
-        @param t: A munkás által elfoglalt Tile
-        @param name: a munkás neve
+        @param t A munkás által elfoglalt Tile
+        @param name a munkás neve
     */
     public Worker(Tile t, String name) {
         this.tile = t;
@@ -79,9 +79,9 @@ public class Worker extends GameObject {
     /**
         Konstrukor, ahol ez erőt is meg lehet adni
         
-        @param t: A munkás által elfoglalt Tile
-        @param name: a munkás neve
-        @param force: a munkás ereje
+        @param t A munkás által elfoglalt Tile
+        @param name a munkás neve
+        @param force a munkás ereje
     */
     public Worker(Tile t, String name, int force) {
         this.tile = t;
@@ -93,8 +93,8 @@ public class Worker extends GameObject {
         Egy adott munkást olvas be a térképfájlból, és
         visszatér a munkás megfelelően inicializált példányával.
         
-        @param tokens: a térképfile tokenek-re szétszedve
-        @param t: a munkás által elfoglalt mező
+        @param tokens a térképfile tokenek-re szétszedve
+        @param t a munkás által elfoglalt mező
         @throws SyntaxError ha nem a térképleíró nyelv szabályainak megfelelő struktúrát
                             talál
     */
@@ -130,7 +130,7 @@ public class Worker extends GameObject {
         a megfelelő akciót végrehajta.
         Nem értelmezett input esetén semmit se csinál.
         
-        @param input: az input String-ben
+        @param input az input String-ben
     */
     public void getInput(String input){
         input = input.toLowerCase();
