@@ -1,42 +1,67 @@
 package projlab;
 
+import projlab.SyntaxError;
+import projlab.NotImplementedException;
+
+import java.util.ArrayList;
+import java.util.Random;
+
 public class Box extends GameObject {
-    boolean locked;
+    private boolean locked = false;
+    int weight = new Random().nextInt(30) + 20;
 
-    public Box() {
-        this.locked = false;
+    public Box(Tile t) { this.tile = t; }
+
+    public Box(Tile t, int weight) {
+        this.tile = t;
+        this.weight = weight;
+    }
+
+    public static Box fromString(ArrayList<String> tokens, Tile t) throws SyntaxError {
+        int weight = -1;
+        while (! tokens.get(0).equals("}")){
+            if (tokens.remove(0).equals(":weight"))
+                weight = Map.parse_number(tokens);
+        }
+
+        tokens.remove(0);
+
+        if (weight > 0)
+            return new Box(t, weight);
+
+        return new Box(t);
     }
 
     @Override
-    public void move(Direction d) {
-        tile.leave(this);
-    }
+    public void move(Direction d)  { }
 
     @Override
-    public boolean canEnter(Tile t, Direction d) {
-        System.out.println("Can a box enter this tile?");
-        if (tile.getNeighborInDirection(d) == null){
+    public boolean canEnter(Tile t, Direction d, double force) {
+        if (t == null){
             return false;
         }
-        return t.canBeEnteredBy(this, d);
+        return t.canBeEnteredBy(this, d, force);
     }
 
     @Override
     public void push(Direction d) {
-        System.out.println("Box pushed");
         tile.leave(this);
         tile.getNeighborInDirection(d).enter(this, d);
-        locked = checkLocked();
+        checkLocked();
     }
 
     @Override
-    public boolean canBeOverPoweredBy(Box b, Direction d) {
-        return canEnter(tile.getNeighborInDirection(d), d);
+    public boolean canBeOverPoweredBy(Box b, Direction d, double force) {
+        if (force < weight)
+            return false;
+        return canEnter(tile.getNeighborInDirection(d), d, force - weight);
     }
 
     @Override
-    public boolean canBeOverPoweredBy(Worker w, Direction d) {
-        return canEnter(tile.getNeighborInDirection(d), d);
+    public boolean canBeOverPoweredBy(Worker w, Direction d, double force) {
+        if (force < weight)
+            return false;
+        return canEnter(tile.getNeighborInDirection(d), d, force - weight);
     }
 
     @Override
@@ -60,13 +85,14 @@ public class Box extends GameObject {
         !OK                 OK
 
     */
-    private boolean checkLocked() {
-        boolean northIsOpen = canEnter(tile.getNeighborInDirection(Direction.UP), Direction.UP);
-        boolean southIsOpen = canEnter(tile.getNeighborInDirection(Direction.DOWN), Direction.DOWN);
-        boolean eastIsOpen = canEnter(tile.getNeighborInDirection(Direction.RIGHT), Direction.RIGHT);
-        boolean westIsOpen = canEnter(tile.getNeighborInDirection(Direction.LEFT), Direction.LEFT);
-        System.out.println("lock checked");
-        return ! ( (northIsOpen && southIsOpen) || (westIsOpen && eastIsOpen) );
+    private void checkLocked() {
+        if (tile == null)
+            return;
+        boolean northIsOpen = canEnter(tile.getNeighborInDirection(Direction.UP), Direction.UP, 10000);
+        boolean southIsOpen = canEnter(tile.getNeighborInDirection(Direction.DOWN), Direction.DOWN, 10000);
+        boolean eastIsOpen = canEnter(tile.getNeighborInDirection(Direction.RIGHT), Direction.RIGHT, 10000);
+        boolean westIsOpen = canEnter(tile.getNeighborInDirection(Direction.LEFT), Direction.LEFT, 10000);
+        locked = ! ( (northIsOpen && southIsOpen) || (westIsOpen && eastIsOpen) );
 
 
     }
@@ -78,6 +104,6 @@ public class Box extends GameObject {
 
     @Override
     public String toString() {
-        return "B";
+        return "B ";
     }
 }

@@ -1,10 +1,14 @@
 package projlab;
 
-public class Switch extends Tile {
-    private Hole controlling;
+import java.util.ArrayList;
 
-    public Switch() {
-        controlling = null;
+public class Switch extends Tile {
+    private Hole controlling = null;
+
+    public Switch() { }
+
+    static Switch fromString(ArrayList<String> tokens){
+        return new Switch();
     }
 
     @Override
@@ -26,6 +30,6 @@ public class Switch extends Tile {
 
     @Override
     public String toString() {
-        return occupiedBy == null ? "S" : occupiedBy.toString();
+        return occupiedBy == null ? "S " : occupiedBy.toString();
     }
 }

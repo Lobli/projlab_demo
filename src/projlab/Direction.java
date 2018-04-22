@@ -2,7 +2,7 @@ package projlab;
 
 public enum Direction {
     UP("UP"),
-    RIGHT("RIGht"),
+    RIGHT("RIGHT"),
     DOWN("DOWN"),
     LEFT("LEFT");
 

@@ -1,0 +1,67 @@
+{ Map
+	:name 'Tesztesetek'
+	:height 6
+	:width 6
+	:rows [
+		{ Row
+			:cells [
+				{Wall}
+				{Wall}
+				{Wall}
+				{Wall}
+				{Wall}
+				{Wall}
+			]
+		}
+		{ Row
+			:cells [
+				{Wall}
+				{Tile}
+				{Tile}
+				{Switch :controlling 'H1'}
+				{TargetTile :belongsTo 'Ive'}
+				{Wall}
+			]
+		}
+		{ Row
+			:cells [
+				{Wall}
+				{Tile}
+				{Tile :occupiedBy {Worker :name 'Ive' :force 12}}
+				{Tile}
+				{Tile}
+				{Wall}
+			]
+		}
+		{ Row
+			:cells [
+				{Wall}
+				{Tile :occupiedBy {Worker :name 'Joe' :force 12}}
+				{Tile :occupiedBy {Box :weight 6}}
+				{TargetTile :belongsTo 'Joe'}
+				{Hole}
+				{Wall}
+			]
+		}
+		{ Row
+			:cells [
+				{Wall}
+				{Tile}
+				{Hole :id 'H1' :closed 'false'}
+				{Tile :occupiedBy {Box :weight 6}}
+				{Tile}
+				{Wall}
+			]
+		}
+		{ Row
+			:cells [
+				{Wall}
+				{Wall}
+				{Wall}
+				{Wall}
+				{Wall}
+				{Wall}
+			]
+		}
+	]
+}

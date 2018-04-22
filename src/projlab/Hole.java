@@ -2,11 +2,9 @@ package projlab;
 
 public class Hole extends Tile {
 
-    private boolean closed;
+    private boolean closed = true;
 
-    public Hole() {
-        closed = false;
-    }
+    public Hole() { }
 
     public void setClosed(boolean closed) {
         this.closed = closed;
@@ -18,22 +16,24 @@ public class Hole extends Tile {
 
     @Override
     public void enter(Box b, Direction d) {
-        if (closed) {
+        if (closed)
+            super.enter(b, d);
+        else
             b.removeFromGame();
-        }
     }
 
 
     @Override
     public void enter(Worker w, Direction d) {
-        super.enter(w, d);
-        if(closed) {
+        if(closed)
+            super.enter(w,d);
+        else
             w.removeFromGame();
-        }
+
     }
 
     @Override
     public String toString() {
-        return "H";
+        return closed ? "T " : "H ";
     }
 }

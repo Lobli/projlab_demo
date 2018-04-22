@@ -1,266 +1,157 @@
 package projlab;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import projlab.SyntaxError;
+
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class GameEngine {
-    private List<Worker> workers;
-    private List<Tile> tiles;
-    private List<Box> boxes;
-    private Timer timer;
-    private int gameTime;
+    Map map;
+    private Timer timer = null;
 
-    public GameEngine(int gameTimeSeconds, List<Tile> tiles, List<Worker> workers, List<Box> boxes) {
-        this.workers = workers;
-        this.tiles = tiles;
-        this.boxes = boxes;
-        this.timer = null;
-        gameTime = gameTimeSeconds;
+    public GameEngine() throws SyntaxError, IOException {
+        timer = setTimer();
+        map = chooseMap();
+        startGame();
+    }
+
+    private Timer setTimer(){
+        Scanner s = new Scanner(System.in);
+        boolean controllable = false;
+        System.out.print("TIMER OFF / ON> ");
+        String response = s.nextLine();
+        if ("OFF".contains(response.toLowerCase()) || response.equals(""))
+            controllable = true;
+
+        if (controllable) {
+            return new Timer(10000, true);
+        }
+        else {
+            System.out.print("ENTER GAME TIME> ");
+            response = s.nextLine();
+            while (!response.matches("\\d+")) {
+                System.out.print("ENTER A NUMBER> ");
+                response = s.nextLine();
+            }
+            return new Timer(Integer.parseInt(response), false);
+        }
+
+    }
+
+    private Map chooseMap() throws SyntaxError, IOException {
+        File[] maps = new File("maps/").listFiles();
+
+        for (int i = 0; i < maps.length; i++){
+            String filename = maps[i].getName().split(Pattern.quote("."))[0];
+            System.out.println(String.format("[%d] %s", i, filename));
+        }
+        System.out.print("CHOOSE MAP> ");
+
+        String chosen = new Scanner(System.in).nextLine();
+        int chosenNum = Integer.parseInt(chosen);
+
+        return new Map(maps[chosenNum].getAbsolutePath());
     }
 
     private void startGame(){
-        timer = new Timer(gameTime);
 
-        for(Worker w: workers){
+        for(Worker w: map.workers){
             w.setController(this);
         }
 
-        for (Box b : boxes){
+        for (Box b : map.boxes){
             b.setController(this);
         }
 
         playGame();
     }
 
-    private void pauseGame(){
+    public void pauseGame(){
         timer.togglePaused();
     }
 
     private void playGame(){
-        System.out.println("Game running!");
+        map.printMap();
+        Scanner s  = new Scanner(System.in);
+        String[] inputs = new String[map.workers.size()];
         while(timer.tick()) {
-            printMap();
-            System.out.println();
-            char c = 'W';
-            if (c == 'P'){
-                timer.togglePaused();
-            }
-            else if (c == 'W' || c == 'A' || c == 'S' || c == 'D'){
-                Direction chosen = Direction.UP;
-                if (c == 'W') {
-                    chosen = Direction.UP;
-                } else if (c == 'D') {
-                    chosen = Direction.RIGHT;
-                } else if (c == 'S') {
-                    chosen = Direction.DOWN;
-                } else if (c == 'A') {
-                    chosen = Direction.LEFT;
+
+            if(timer.isPaused())
+                continue;
+
+            for (int i = 0; i < map.workers.size(); i++){
+                System.out.print(map.workers.get(i).getName()+">");
+                String input = s.nextLine();
+
+                while (!Worker.CONTROLS.containsKey(input.toLowerCase())){
+                    System.out.print("INPUT NOT DEFINED (PRESS ENTER OR G TO PASS)> ");
+                    input = s.nextLine();
                 }
 
-                for (Worker worker : workers) {
-                    worker.move(chosen);
-                }
+                inputs[i] = input;
             }
 
-            if (allBoxesLocked() || boxes.size() < 1 || workers.size() < 1) //valóságban <= 1
+            for (int i = 0; i < map.workers.size(); i++)
+                map.workers.get(i).getInput(inputs[i]);
+
+            if (allBoxesLocked() || map.boxes.size() < 1 || map.workers.size() < 2)
                 break;
+
+            map.printMap();
         }
 
         endGame();
     }
 
-    private void printMap(){
-        for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 5; j++) {
-                System.out.print(tiles.get((i*5 + j)));
-            }
+    private void endGame(){
+        timer.stop();
+        Worker winner = getWinner();
+        if (winner == null){
+            System.out.println("IT'S A TIE!");
+        }
+        else {
+            System.out.println("GAME OVER!");
+            System.out.print("WINNER: ");
+            System.out.print(winner.getName());
             System.out.println();
         }
     }
 
-    private void endGame(){
-        timer.stop();
-        Worker winner = getWinner();
-        System.out.println("Game over!");
-        System.out.print("Winner: ");
-        System.out.print(winner.getName());
-        System.out.println();
-    }
-
     private boolean allBoxesLocked(){
-        boolean allLocked = false;
-        for(Box box : boxes) {
-            allLocked = allLocked | box.isLocked();
+        for(Box box : map.boxes) {
+            if (box.isLocked())
+                return true;
         }
-        return allLocked;
+        return false;
     }
 
     private Worker getWinner(){
-        Worker winner = workers.get(0);
-        for(Worker worker: workers){
+        Worker winner = map.workers.get(0);
+        for(Worker worker: map.workers){
             if(worker.getPoints() > winner.getPoints()){
                 winner = worker;
+            }
+            else if (worker.getPoints() == winner.getPoints()){
+                return null;
             }
         }
         return winner;
     }
 
     public void removeWorker(Worker worker){
-        workers.remove(worker);
+        map.workers.remove(worker);
     }
 
     public void removeBox(Box box) {
-        boxes.remove(box);
+        map.boxes.remove(box);
     }
 
-    public void setGameTime(int gameTime) {
-        this.gameTime = gameTime;
-    }
+    public static void main(String[] args) throws SyntaxError, IOException {
+        GameEngine ge = new GameEngine();
 
-    public int getGameTime() {
-        return gameTime;
-    }
-
-    public static String[] readLines(String filename) throws IOException {
-            FileReader fileReader = new FileReader(filename);
-
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-            List<String> lines = new ArrayList<String>();
-            String line = null;
-            while ((line = bufferedReader.readLine()) != null) {
-                lines.add(line);
-            }
-            bufferedReader.close();
-            return lines.toArray(new String[lines.size()]);
-    }
-
-    public static GameEngine loadGame(String path) {
-        //String [] lines = readLines(path);
-        String[] lines = {
-                "WWWWW",
-                "WTTTW",
-                "WTTTW",
-                "WTBTW",
-                "WTPTW",
-                "WWWWW"
-        };
-
-        ArrayList<Tile> tiles  = new ArrayList<Tile>();
-        ArrayList<Worker> workers= new ArrayList<Worker>();
-        ArrayList<Box> boxes = new ArrayList<>();
-
-        int mapHeight = lines.length;
-        int mapWidth  = lines[0].length();
-
-        for (int i = 0; i < mapHeight; i++) {
-            for (int j = 0; j < mapWidth; j++) {
-                if (lines[i].charAt(j) == 'W') {    //Wall
-                    tiles.add(new Wall());
-                } else if (lines[i].charAt(j) == 'B') { //Box
-                    Tile t = new Tile();
-                    Box b = new Box();
-                    b.tile = t;
-                    t.setOccupiedBy(b);
-                    boxes.add(b);
-                    tiles.add(t);
-                } else if (lines[i].charAt(j) == 'P') { //Player
-                    Tile t = new Tile();
-                    Worker w = new Worker("Player 1");
-                    t.setOccupiedBy(w);
-                    w.tile = t;
-                    workers.add(w);
-                    tiles.add(t);
-                } else if (lines[i].charAt(j) == 'S') { //Switch
-                    Tile t = new Switch();
-                    tiles.add(t);
-                } else if (lines[i].charAt(j) == 'H') { //Hole
-                    tiles.add(new Hole());
-                } else if (lines[i].charAt(j) == 'O') { //TargetTile
-
-                }
-                else {                                  //Normal tile
-                    tiles.add(new Tile());
-                }
-            }
-        }
-
-        for (int i = 0; i < mapHeight; i++) {
-            for (int j = 0; j < mapWidth; j++) {
-                if (i == 0) { // első sor
-                    if (j == 0) { // első oszlop
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.UP, null);
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.RIGHT, tiles.get(mapWidth * i + j + 1));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.DOWN, tiles.get(mapWidth * (i + 1) + j));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.LEFT, null);
-                    } else if (j == mapWidth - 1) { //utolsó oszlop
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.UP, null);
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.RIGHT, null);
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.DOWN, tiles.get(mapWidth * (i + 1) + j));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.LEFT, tiles.get(mapWidth * i + j - 1));
-                    } else { // középső oszlopok
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.UP, null);
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.RIGHT, tiles.get(mapWidth*(i) + j+1));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.DOWN, tiles.get(mapWidth*(i+1) + j));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.LEFT, tiles.get(mapWidth*i + j-1));
-                    }
-                }
-
-                else if (i == 5){ // utolsó sor
-                    if (j == 0) { // első oszlop
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.UP, tiles.get(mapWidth*(i-1) + j));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.RIGHT, tiles.get(mapWidth*i + j+1));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.RIGHT, tiles.get(mapWidth*i + j+1));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.LEFT, null);
-                    }
-                    else if (j == mapWidth - 1) { // utolsó oszlop
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.UP, tiles.get(mapWidth*(i-1) + j));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.RIGHT, null);
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.DOWN, null);
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.LEFT, tiles.get(mapWidth*i + j-1));
-
-                    }
-                    else { // középső oszlopok
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.UP,  tiles.get(mapWidth*(i-1) + j));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.RIGHT, tiles.get(mapWidth*(i) + j+1));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.DOWN, null);
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.LEFT, tiles.get(mapWidth*i + j-1));
-                    }
-                }
-
-                else { // középső sorok
-                    if (j == 0){ // első oszlop
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.UP,  tiles.get(mapWidth*(i-1) + j));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.RIGHT, tiles.get(mapWidth*(i) + j+1));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.DOWN, tiles.get(mapWidth*(i+1) + j));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.LEFT, null);
-                    }
-                    else if (j == mapWidth - 1){ // utolsó oszlop
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.UP,  tiles.get(mapWidth*(i-1) + j));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.RIGHT, null);
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.DOWN, tiles.get(mapWidth*(i+1) + j));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.LEFT, tiles.get(mapWidth*i + j-1));
-                    }
-                    else {
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.UP,  tiles.get(mapWidth*(i-1) + j));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.RIGHT, tiles.get(mapWidth * (i) + j + 1));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.DOWN, tiles.get(mapWidth*(i+1) + j));
-                        tiles.get(mapWidth * i + j).setNeighborInDirection(Direction.LEFT, tiles.get(mapWidth*i + j-1));
-                    }
-                }
-            }
-        }
-
-        return new GameEngine(20, tiles, workers, boxes);
-    }
-
-    public static void main(String[] args){
-        GameEngine gameEngine = loadGame("/Users/its_behind_you/IdeaProjects/untitled1/out/production/untitled1/com/company/map.txt");
-        gameEngine.startGame();
     }
 }
