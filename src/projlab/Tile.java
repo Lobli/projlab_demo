@@ -40,7 +40,11 @@ public class Tile {
         return t;
     }
 
-    public void leave(GameObject go) {
+    public void leave(Worker go) {
+        this.occupiedBy = null;
+    }
+
+    public void leave(Box go) {
         this.occupiedBy = null;
     }
 

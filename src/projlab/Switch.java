@@ -23,10 +23,11 @@ public class Switch extends Tile {
 
 
     @Override
-    public void leave(GameObject go) {
+    public void leave(Box go) {
         super.leave(go);
         controlling.setClosed(!controlling.isClosed());
     }
+
 
     @Override
     public String toString() {

@@ -21,16 +21,13 @@ public class GameEngine {
 
     private Timer setTimer(){
         Scanner s = new Scanner(System.in);
-        boolean controllable = false;
+
         System.out.print("TIMER OFF / ON> ");
         String response = s.nextLine();
-        if ("OFF".contains(response.toLowerCase()) || response.equals(""))
-            controllable = true;
-
-        if (controllable) {
+        if (response.equals("off") || response.equals("OFF") ||  response.equals(""))
             return new Timer(10000, true);
-        }
-        else {
+
+        if (response.equals("on") || response.equals("ON")){
             System.out.print("ENTER GAME TIME> ");
             response = s.nextLine();
             while (!response.matches("\\d+")) {
@@ -38,6 +35,9 @@ public class GameEngine {
                 response = s.nextLine();
             }
             return new Timer(Integer.parseInt(response), false);
+        }
+        else {
+            return this.setTimer();
         }
 
     }
@@ -47,7 +47,7 @@ public class GameEngine {
 
         for (int i = 0; i < maps.length; i++){
             String filename = maps[i].getName().split(Pattern.quote("."))[0];
-            System.out.println(String.format("[%d] %s", i, filename));
+            //System.out.println(String.format("[%d] %s", i, filename));           //csak debuggoláshoz kell
         }
         System.out.print("CHOOSE MAP> ");
 
