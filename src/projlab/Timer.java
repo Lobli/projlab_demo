@@ -36,6 +36,7 @@ public class Timer {
     /**
         Egy időlépést vezényel le. Figyelembe veszi, hogy van-e még hátra a játékból,
         vagy szünetelve van-e a játék.
+        @return mahet-e tovább a játék vagy sem (true / false)
     */
     public boolean tick() {
         Scanner s = new Scanner(System.in);
@@ -65,6 +66,7 @@ public class Timer {
     
     /**
         Megadja, hogy szünetelve van-e a játék.
+        @return szünetelve van-e a játék
     */
     public boolean isPaused() {
         return paused;
