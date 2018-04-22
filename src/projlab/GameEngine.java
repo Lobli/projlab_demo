@@ -9,16 +9,30 @@ import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
+/**
+*  A játékhoz tartozó adatokat kezeli és a játékot vezeti le.
+*/
 public class GameEngine {
+    //A raktár térképe, amin a játékosok éppen játszanak.
     Map map;
+    //A játékidőt mérő Timer példány
     private Timer timer = null;
 
+    /**
+    * Az osztály konstruktora
+    * @throws SyntaxError   Ha probléma lenne a szintakszissal
+    * @throws IOException   Ha az input nem megfelelő
+    */
     public GameEngine() throws SyntaxError, IOException {
         timer = setTimer();
         map = new Map(new File("maps/Tests.bkml").getAbsolutePath());
         startGame();
     }
 
+    /**
+    * Beállítja a timert
+    * @return Visszaadja a timert
+    */
     private Timer setTimer(){
         Scanner s = new Scanner(System.in);
 
@@ -42,6 +56,12 @@ public class GameEngine {
 
     }
 
+    /**
+    * Kiválasztja az adott pályát
+    * @throws SyntaxError   Ha probléma lenne a szintakszissal
+    * @throws IOException   Ha az input nem megfelelő
+    * @return               Visszaadja a kiválasztott pályát
+    */
     private Map chooseMap() throws SyntaxError, IOException {
         File[] maps = new File("maps/").listFiles();
 
@@ -57,6 +77,10 @@ public class GameEngine {
         return new Map(maps[chosenNum].getAbsolutePath());
     }
 
+    /**
+    * Beállítja önmagát controllernek a térképen elhelyezkedő dobozoknak és munkásoknak, 
+    * majd elindítja a játékot.
+    */
     private void startGame(){
 
         for(Worker w: map.workers){
@@ -70,10 +94,21 @@ public class GameEngine {
         playGame();
     }
 
+    /**
+    * Átmenetileg szünetelteti a játékot.
+    */
     public void pauseGame(){
         timer.togglePaused();
     }
 
+    /**
+    * A játék “main loop”-ját vezeti le: ha még van idő a játékból és nincs szünetelve a játék, 
+    * mindegyik Workerre bekéri a neki szánt inputot majd kiadja a Workereknek a kapott parancsot. 
+    * Miután mindegyik akció lefutott, ellenőrzni, hogy valamelyik játék végét okozó feltétel 
+    * fennáll-e (nincs már doboz a pályán, meghalt egy Worker vagy mindegyik doboz olyan helyzetbe 
+    * jutott, ahonnan már nem lehet eltolni). Ha igen, megszakítja a játékot, viszont ha még mehet 
+    * tovább, akkor kinyomtatja a térképet és újrakezdi a kört.
+    */
     private void playGame(){
         map.printMap();
         Scanner s  = new Scanner(System.in);
@@ -107,6 +142,9 @@ public class GameEngine {
         endGame();
     }
 
+    /**
+    * Leállítja a Timer-t és megállapítja, ki a győztes.
+    */
     private void endGame(){
         timer.stop();
         Worker winner = getWinner();
@@ -123,6 +161,10 @@ public class GameEngine {
         }
     }
 
+    /**
+    * Ellenőrzi, hogy mindegyik doboz olyan pozícióban van-e, ahonnan már nem lehet elmozgatni.
+    * @return Igazat vagy hamisat ad vissza, annak megfelelően, hogy még van-e mozgatható doboz.
+    */
     private boolean allBoxesLocked(){
         boolean temp = true;
         for(Box box : map.boxes) {
@@ -132,6 +174,10 @@ public class GameEngine {
         return temp;
     }
 
+    /**
+    * Megállapítja, hogy a pontszámok alapján ki a nyertes.
+    * @return Visszaadja az nyertest
+    */
     private Worker getWinner(){
         if (map.workers.size() ==1)
             return map.workers.get(0);
@@ -144,14 +190,23 @@ public class GameEngine {
         else return null;
     }
 
+    /**
+    * Elveszi a megadott Worker-t a játékban résztvevő Worker-ek listájából.
+    */
     public void removeWorker(Worker worker){
         map.workers.remove(worker);
     }
 
+    /**
+    * Elveszi a megadott Box-ot a játékban résztvevő Box-ok listájából.
+    */
     public void removeBox(Box box) {
         map.boxes.remove(box);
     }
 
+    /**
+    * A programot indító Main függvény.
+    */
     public static void main(String[] args) throws SyntaxError, IOException {
         GameEngine ge = new GameEngine();
 
