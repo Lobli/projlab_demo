@@ -39,7 +39,7 @@
 				{Tile :occupiedBy {Worker :name 'Joe' :force 12}}
 				{Tile :occupiedBy {Box :weight 6}}
 				{TargetTile :belongsTo 'Joe'}
-				{Hole}
+				{Hole :id 'H2' :closed 'false'}
 				{Wall}
 			]
 		}
@@ -47,7 +47,7 @@
 			:cells [
 				{Wall}
 				{Tile}
-				{Hole :id 'H1' :closed 'false'}
+				{Hole :id 'H1' :closed 'true'}
 				{Tile :occupiedBy {Box :weight 6}}
 				{Tile}
 				{Wall}
