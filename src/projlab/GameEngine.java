@@ -42,7 +42,7 @@ public class GameEngine {
             return new Timer(10000, true);
 
         if (response.equals("on") || response.equals("ON")){
-            System.out.print("ENTER GAME TIME> ");
+            System.out.print("Number of rounds?> ");
             response = s.nextLine();
             while (!response.matches("\\d+")) {
                 System.out.print("ENTER A NUMBER> ");
