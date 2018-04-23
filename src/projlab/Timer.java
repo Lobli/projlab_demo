@@ -6,7 +6,7 @@ public class Timer {
     /**
         A jelenleg a játékból hátralévő időlépések száma.
     */
-    private int time;
+    protected int time;
     
     /**
         Megadja, hogy a háttérben számoljon vissza a Timer vagy diszkrét időlépésenként
@@ -14,7 +14,7 @@ public class Timer {
         
         Háttérben futóra inicializálva.
     */
-    private boolean steppable = false;
+    protected boolean steppable = false;
     
     /**
         Megadja, hogy éppen szünetre van-e állítva az óra.
