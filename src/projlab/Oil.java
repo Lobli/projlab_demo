@@ -5,7 +5,7 @@ public class Oil extends Material {
         Konstruktor, beállítja az anyag együtthatóját
     */
     public Oil(){
-        coefficient = 0.5;
+        coefficient = 1.5;
     }
     
     /**
