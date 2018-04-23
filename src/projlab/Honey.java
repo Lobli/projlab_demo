@@ -6,7 +6,7 @@ package projlab;
 public class Honey extends Material {
     //Az osztály konstruktora
     public Honey(){
-        coefficient = 0.5;
+        coefficient = 0.2;
     }
 
     /**
