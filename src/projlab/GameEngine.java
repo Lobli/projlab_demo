@@ -148,7 +148,8 @@ public class GameEngine {
     private void endGame(){
         timer.stop();
         Worker winner = getWinner();
-        map.printMap();
+         if (timer.steppable == true) {
+            map.printMap();}
         if (winner == null){
             System.out.println("\nGAME OVER!");
             System.out.println("IT'S A TIE!");
