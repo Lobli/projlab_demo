@@ -118,7 +118,7 @@ public class GameEngine {
             if(timer.isPaused())
                 continue;
 
-            for (int i = 0; i < map.workers.size(); i++){
+            for (int i = map.workers.size()-1; 0 <= i; i--){
                 System.out.print(map.workers.get(i).getName()+">");
                 String input = s.nextLine();
 
