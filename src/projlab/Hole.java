@@ -62,9 +62,13 @@ public class Hole extends Tile {
     public String toString() {
         if (closed){
             if (occupiedBy == null){
-                return "T ";}
+                if (coveredBy == null){
+                    return "T ";}
+                else
+                    return coveredBy.toString();}
             else
-                return occupiedBy.toString();}
+                return occupiedBy.toString();
+        }
         else return "H ";
     }
 }
