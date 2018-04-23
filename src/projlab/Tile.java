@@ -23,7 +23,7 @@ public class Tile {
         ezt a mezőt.
         null-ra (tiszta) inicializálva.
     */
-    private Material coveredBy = null;
+    protected Material coveredBy = null;
 
     /**
         Egy adott Tile-t olvas be a térképfájlból.
